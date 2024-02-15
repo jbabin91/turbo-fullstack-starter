@@ -1,19 +1,15 @@
 const scopes = [
-  { value: "repo", name: "repo: anything related to managing the repo itself" },
-  { value: "eslint", name: "eslint: anything global eslint specific" },
-  { value: "github", name: "github: anything github workflows specific" },
-  { value: "prettier", name: "prettier: anything global prettier specific" },
-  { value: "tailwind", name: "tailwind: anything global tailwind specific" },
-  {
-    value: "typescript",
-    name: "typescript: anything global tsconfig specific",
-  },
+  { value: 'repo', name: 'repo: anything related to managing the repo itself' },
+  { value: 'frontend', name: 'frontend: anything related to the frontend app' },
+  { value: 'backend', name: 'backend: anything related to the backend app' },
+  { value: 'packages', name: 'packages: anything related to packages' },
+  { value: 'tooling', name: 'tooling: anything related to the tooling' },
 ];
 
 /** @type {import("cz-git").UserConfig} */
 const config = {
   alias: {
-    b: "chore(repo): bump dependencies",
+    b: 'chore(repo): bump dependencies',
   },
   scopesSearchValue: true,
   maxSubjectLength: 100,
@@ -24,10 +20,10 @@ const config = {
   prompt: {
     scopes,
     enableMultipleScopes: true,
-    scopeEnumSeparator: ",",
+    scopeEnumSeparator: ',',
     useEmoji: true,
   },
-  skipQuestions: ["footer"],
+  skipQuestions: ['footer'],
 };
 
 module.exports = config;
