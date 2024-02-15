@@ -27,6 +27,7 @@ const config = {
     scopeEnumSeparator: ",",
     useEmoji: true,
   },
+  skipQuestions: ["footer"],
 };
 
 module.exports = config;
