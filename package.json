@@ -5,16 +5,30 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*": "prettier -uw"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git",
+      "czConfig": "./.commitlintrc.cjs"
+    }
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "cz-git": "^1.8.0",
+    "husky": "^9.0.11",
+    "is-ci": "^3.0.1",
+    "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "turbo": "latest"
   },
-  "packageManager": "pnpm@8.9.0",
+  "packageManager": "pnpm@8.15.3",
   "engines": {
-    "node": ">=18"
+    "node": ">=20.11.0"
   }
 }
