@@ -1,4 +1,6 @@
 import './index.css';
+import '@fontsource/geist-mono';
+import '@fontsource/geist-sans';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';

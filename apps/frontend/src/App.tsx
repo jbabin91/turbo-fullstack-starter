@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="flex flex-row items-center justify-center">
         <a href="https://vitejs.dev" target="_blank">
           <img alt="Vite logo" className="logo" src={viteLogo} />
         </a>
@@ -20,15 +20,15 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <div className="card">
+      <div className="p-[2em]">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <p>
+        <p className="pt-4">
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
+      <p className="text-[#888]">
         Click on the Vite and React logos to learn more
       </p>
     </>

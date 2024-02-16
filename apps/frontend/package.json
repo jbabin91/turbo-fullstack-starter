@@ -17,16 +17,22 @@
     "root": true
   },
   "dependencies": {
+    "@fontsource/geist-mono": "^5.0.1",
+    "@fontsource/geist-sans": "^5.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:^",
+    "@repo/tailwind-config": "workspace:^",
     "@repo/tsconfig": "workspace:^",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@vitejs/plugin-react-swc": "^3.6.0",
+    "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
     "vite": "^5.1.3"
   }
