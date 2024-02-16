@@ -19,6 +19,7 @@
   "dependencies": {
     "@fontsource/geist-mono": "^5.0.1",
     "@fontsource/geist-sans": "^5.0.1",
+    "@repo/ui": "workspace:^",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

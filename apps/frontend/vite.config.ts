@@ -11,6 +11,7 @@ export default defineConfig({
         entryFileNames: 'js/[name]-[hash].js',
         manualChunks: {
           react: ['react', 'react-dom'],
+          repo: ['@repo/ui'],
         },
       },
     },
