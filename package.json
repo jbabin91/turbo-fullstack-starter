@@ -4,11 +4,16 @@
   "type": "module",
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev",
+    "clean": "git clean -xdf node_modules",
+    "dev": "turbo dev --parallel",
     "format": "prettier -uw --cache .",
     "format:check": "prettier -uc --cache .",
-    "lint": "turbo lint",
-    "prepare": "is-ci || husky"
+    "postinstall": "pnpm lint:ws",
+    "lint": "turbo lint --continue -- --cache --cache-location node_modules/.cache/.eslintcache",
+    "lint:fix": "turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
+    "lint:ws": "pnpm dlx sherif@latest",
+    "prepare": "is-ci || husky",
+    "typecheck": "turbo typecheck"
   },
   "lint-staged": {
     "*": "prettier -uw"
@@ -20,8 +25,6 @@
     }
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
     "cz-git": "^1.8.0",
     "husky": "^9.0.11",
     "is-ci": "^3.0.1",
