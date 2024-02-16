@@ -3,9 +3,15 @@ import { type Config } from 'tailwindcss';
 import animate from 'tailwindcss-animate';
 
 export default {
-  content: ['src/**/*.{ts,tsx}'],
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+  ],
   darkMode: ['class'],
   plugins: [animate, typography],
+  prefix: '',
   theme: {
     container: {
       center: true,
@@ -18,9 +24,6 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-      },
-      borderColor: {
-        DEFAULT: 'hsl(var(--border))',
       },
       borderRadius: {
         lg: 'var(--radius)',

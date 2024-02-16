@@ -1,11 +1,10 @@
 /** @typedef {import("prettier").Config} PrettierConfig */
 /** @typedef {import("prettier-plugin-packagejson").PluginOptions} Packagejson */
-/** @typedef {import("prettier-plugin-tailwindcss").PluginOptions} Tailwindcss */
 
-/** @type {PrettierConfig | Packagejson | Tailwindcss} */
+/** @type {PrettierConfig | Packagejson } */
 const prettierConfig = {
   singleQuote: true,
-  plugins: ['prettier-plugin-packagejson', 'prettier-plugin-tailwindcss'],
+  plugins: ['prettier-plugin-packagejson'],
 };
 
 export default prettierConfig;
