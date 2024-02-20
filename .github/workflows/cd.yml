@@ -22,4 +22,4 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy dist/apps/frontend --project-name=turbo-fullstack-starter --commit-dirty=true
+          command: pages deploy dist/apps/frontend --project-name=tfs-frontend --commit-dirty=true
