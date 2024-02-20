@@ -10,9 +10,7 @@ import { trpc } from './libs/trpc';
 
 function App() {
   const [count, setCount] = useState(0);
-  const { data } = trpc.example.useQuery();
-
-  console.log(data?.message);
+  const { data, isLoading } = trpc.example.useQuery();
 
   return (
     <>
@@ -39,6 +37,7 @@ function App() {
       <p className="text-[#888]">
         Click on the Vite and React logos to learn more
       </p>
+      <p>Message from api: {isLoading ? 'Loading....' : data?.message}</p>
     </>
   );
 }
