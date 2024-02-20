@@ -52,7 +52,7 @@ importers:
         specifier: workspace:^
         version: link:../../tooling/typescript
       wrangler:
-        specifier: ^3.25.0
+        specifier: ^3.28.4
         version: 3.28.4(@cloudflare/workers-types@4.20240208.0)
 
   apps/frontend:
