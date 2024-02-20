@@ -23,18 +23,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Setup
         uses: ./tooling/github/setup
-
       - name: Copy env
         run: cp .env.example .env
-
-      - name: Format
-        run: pnpm format:check
-
-      - name: Lint
-        run: pnpm lint
-
-      - name: Typecheck
-        run: pnpm typecheck
+      - name: Branch checks
+        uses: ./tooling/github/branch-checks
+      - name: Build Apps
+        uses: ./tooling/github/build-app

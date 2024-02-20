@@ -1,0 +1,8 @@
+name: Build Project
+description: Build action to build all projects in the monorepo
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: pnpm build

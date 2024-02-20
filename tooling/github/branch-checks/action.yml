@@ -1,0 +1,15 @@
+name: Branch Checks
+description: Action to run checks against the current branch for code consistency
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: pnpm format:check
+    - shell: bash
+      run: pnpm lint
+    - shell: bash
+      run: pnpm typecheck
+    # Add additional checks here
+    # - shell: bash
+    #   run: pnpm test # pnpm e2e # pnpm test:coverage

@@ -1,0 +1,25 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup
+        uses: ./tooling/github/setup
+      - name: Copy env
+        run: cp .env.example .env
+      - name: Branch checks
+        uses: ./tooling/github/branch-checks
+      - name: Build Apps
+        uses: ./tooling/github/build-app
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: pages deploy dist/apps/frontend --project-name=turbo-fullstack-starter --commit-dirty=true
