@@ -37,11 +37,13 @@ const eslintConfig = {
     },
     {
       extends: [
+        'plugin:react/recommended',
+        'plugin:react/jsx-runtime',
         'plugin:react-hooks/recommended',
         'plugin:jsx-a11y/recommended',
       ],
       files: ['*.jsx', '*.tsx'],
-      plugins: ['react', 'react-refresh'],
+      plugins: ['react-refresh'],
       rules: {
         'react-refresh/only-export-components': [
           'warn',
@@ -58,6 +60,10 @@ const eslintConfig = {
             shorthandLast: false,
           },
         ],
+        'react/prop-types': 'off',
+      },
+      settings: {
+        react: { version: 'detect' },
       },
     },
   ],

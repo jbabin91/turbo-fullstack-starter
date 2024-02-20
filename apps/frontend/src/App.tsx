@@ -13,10 +13,10 @@ function App() {
   return (
     <>
       <div className="flex flex-row items-center justify-center">
-        <a href="https://vitejs.dev" target="_blank">
+        <a href="https://vitejs.dev" rel="noreferrer" target="_blank">
           <img alt="Vite logo" className="logo" src={viteLogo} />
         </a>
-        <a href="https://react.dev" target="_blank">
+        <a href="https://react.dev" rel="noreferrer" target="_blank">
           <img alt="React logo" className="logo react" src={reactLogo} />
         </a>
       </div>
