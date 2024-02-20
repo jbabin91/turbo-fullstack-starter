@@ -7,6 +7,7 @@
     "./styles.css": "./src/styles.css"
   },
   "scripts": {
+    "clean": "rm -rf .turbo node_modules",
     "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc --noEmit"
   },

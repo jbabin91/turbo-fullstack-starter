@@ -1,0 +1,7 @@
+{
+  "extends": "@repo/tsconfig/base",
+  "compilerOptions": {
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
+    "types": ["@cloudflare/workers-types"]
+  }
+}

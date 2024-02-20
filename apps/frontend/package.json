@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc && vite build",
+    "clean": "rm -rf .turbo node_modules",
     "dev": "vite",
     "lint": "eslint . --max-warnings 0",
     "preview": "vite preview",

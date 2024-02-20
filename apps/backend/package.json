@@ -1,0 +1,27 @@
+{
+  "name": "backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "deploy": "wrangler deploy --minify src/index.ts",
+    "dev": "wrangler dev src/index.ts",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@repo/eslint-config/base"
+    ],
+    "root": true
+  },
+  "dependencies": {
+    "hono": "^4.0.5"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240208.0",
+    "@repo/eslint-config": "workspace:^",
+    "@repo/tsconfig": "workspace:^",
+    "wrangler": "^3.25.0"
+  }
+}

@@ -9,6 +9,7 @@ node_modules
 .env*
 .env.*
 !.env.example
+.dev.vars
 
 # Testing
 coverage
@@ -24,7 +25,7 @@ coverage
 out/
 build
 dist
-
+.wrangler
 
 # Debug
 npm-debug.log*
