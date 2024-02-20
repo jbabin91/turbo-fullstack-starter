@@ -25,5 +25,5 @@
       "outputs": ["node_modules/.cache/tsbuildinfo.json"]
     }
   },
-  "globalEnv": ["DATABASE_URL"]
+  "globalEnv": ["API_URL", "DATABASE_URL", "NODE_ENV"]
 }

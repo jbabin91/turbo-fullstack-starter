@@ -20,9 +20,14 @@
   "dependencies": {
     "@fontsource/geist-mono": "^5.0.1",
     "@fontsource/geist-sans": "^5.0.1",
+    "@repo/api": "workspace:^",
     "@repo/ui": "workspace:^",
+    "@tanstack/react-query": "^5.22.2",
+    "@trpc/client": "11.0.0-next-beta.289",
+    "@trpc/react-query": "11.0.0-next-beta.289",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "superjson": "^2.2.1"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:^",
