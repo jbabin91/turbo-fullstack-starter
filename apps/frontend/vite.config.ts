@@ -5,6 +5,8 @@ import { defineConfig, loadEnv } from 'vite';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
 
+  console.log('API URL:', env.API_URL);
+
   return {
     build: {
       rollupOptions: {
