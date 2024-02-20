@@ -58,4 +58,4 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: deploy apps/backend --commit-dirty=true
+          command: deploy apps/backend/src/index.ts --minify
