@@ -6,7 +6,17 @@ import { trpcServer } from './middleware/trpc-server';
 
 const app = new Hono();
 
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: [
+      'http://localhost:5147',
+      'https://tfs.jacebabin.com',
+      'https://tfs-frontend.pages.dev',
+      'https://*.tfs-frontend.pages.dev',
+    ],
+  }),
+);
 
 app.get('/', (c) => {
   return c.text('Hello Hono!');
