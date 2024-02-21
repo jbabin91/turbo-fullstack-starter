@@ -21,12 +21,14 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
+    define: {
+      API_URL: JSON.stringify(env.API_URL),
+    },
     plugins: [react()],
     server: {
       proxy: {
-        '/api/trpc': {
+        '/trpc': {
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api\/trpc/, '/trpc'),
           target: env.API_URL ?? 'http://localhost:8787',
         },
       },

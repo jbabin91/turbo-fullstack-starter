@@ -20,10 +20,13 @@
       "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/.eslintcache"]
     },
+    "preview": {
+      "dependsOn": ["^build"]
+    },
     "typecheck": {
       "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/tsbuildinfo.json"]
     }
   },
-  "globalEnv": ["API_URL", "DATABASE_URL", "NODE_ENV"]
+  "globalEnv": ["API_URL", "DATABASE_URL", "NODE_ENV", "PORT"]
 }

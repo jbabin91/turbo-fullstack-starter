@@ -10,7 +10,8 @@ app.use(
   cors({
     credentials: true,
     origin: [
-      'http://localhost:5147',
+      'http://localhost:5173',
+      'http://localhost:4173',
       'https://tfs.jacebabin.com',
       'https://tfs-frontend.pages.dev',
       'https://*.tfs-frontend.pages.dev',
