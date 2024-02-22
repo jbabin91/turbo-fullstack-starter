@@ -4,17 +4,20 @@ import { useState } from 'react';
 import SuperJSON from 'superjson';
 
 import { queryClient as QueryClient } from '../libs/react-query';
-import { getBaseUrl, trpc } from '../libs/trpc';
+import { trpc } from '../libs/trpc';
 
 export function TRPCReactProvider({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => QueryClient);
+
+  console.log('MODE', import.meta.env.MODE);
+  console.log('API_URL', import.meta.env.VITE_API_URL);
 
   const [trpcClient] = useState(() =>
     trpc.createClient({
       links: [
         loggerLink({
           enabled: (op) =>
-            process.env.NODE_ENV === 'development' ||
+            import.meta.env.MODE === 'development' ||
             (op.direction === 'down' && op.result instanceof Error),
         }),
         unstable_httpBatchStreamLink({
@@ -24,7 +27,7 @@ export function TRPCReactProvider({ children }: { children: React.ReactNode }) {
             return headers;
           },
           transformer: SuperJSON,
-          url: getBaseUrl(),
+          url: `${import.meta.env.VITE_API_URL}/trpc`,
         }),
       ],
     }),

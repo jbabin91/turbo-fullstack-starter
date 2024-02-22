@@ -34,4 +34,7 @@ app.use(
   }),
 );
 
-export default app;
+export default {
+  fetch: app.fetch,
+  port: 3000,
+};

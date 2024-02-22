@@ -1,12 +1,8 @@
 import react from '@vitejs/plugin-react-swc';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '');
-
-  console.log('API URL:', env.API_URL);
-
+export default defineConfig(() => {
   return {
     build: {
       rollupOptions: {
@@ -21,17 +17,6 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    define: {
-      API_URL: JSON.stringify(env.API_URL),
-    },
     plugins: [react()],
-    server: {
-      proxy: {
-        '/trpc': {
-          changeOrigin: true,
-          target: env.API_URL ?? 'http://localhost:8787',
-        },
-      },
-    },
   };
 });

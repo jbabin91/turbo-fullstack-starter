@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "deploy": "wrangler deploy --minify src/index.ts",
-    "dev": "wrangler dev src/index.ts",
+    "dev": "bun run --hot src/index.ts",
     "lint": "eslint . --max-warnings 0",
+    "preview": "NODE_ENV=production bun run src/index.ts",
+    "start": "NODE_ENV=production bun run src/index.ts",
     "typecheck": "tsc --noEmit"
   },
   "eslintConfig": {
@@ -21,9 +22,8 @@
     "hono": "^4.0.5"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240208.0",
     "@repo/eslint-config": "workspace:^",
     "@repo/tsconfig": "workspace:^",
-    "wrangler": "^3.28.4"
+    "@types/bun": "latest"
   }
 }

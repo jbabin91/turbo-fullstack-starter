@@ -5,6 +5,7 @@
   "scripts": {
     "build": "turbo build",
     "clean": "git clean -xdf node_modules",
+    "clean:workspaces": "turbo clean",
     "dev": "turbo dev --parallel",
     "format": "prettier -uw --cache .",
     "format:check": "prettier -uc --cache .",
@@ -15,6 +16,7 @@
     "lint:ws": "pnpm dlx sherif@latest",
     "prepare": "is-ci || husky",
     "preview": "turbo preview",
+    "start": "turbo start",
     "typecheck": "turbo typecheck"
   },
   "lint-staged": {

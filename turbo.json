@@ -23,6 +23,10 @@
     "preview": {
       "dependsOn": ["^build"]
     },
+    "start": {
+      "cache": false,
+      "persistent": true
+    },
     "typecheck": {
       "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/tsbuildinfo.json"]
