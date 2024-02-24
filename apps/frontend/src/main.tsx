@@ -6,8 +6,8 @@ import { ThemeProvider } from '@repo/ui';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import App from './App.tsx';
-import { Providers } from './providers/index.tsx';
+import { App } from './app';
+import { Providers } from './providers';
 
 ReactDOM.createRoot(document.querySelector('#root')!).render(
   <React.StrictMode>

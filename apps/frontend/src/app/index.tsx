@@ -5,10 +5,10 @@ import { useState } from 'react';
 
 import viteLogo from '/vite.svg';
 
-import reactLogo from './assets/react.svg';
-import { trpc } from './libs/trpc';
+import reactLogo from '../assets/react.svg';
+import { trpc } from '../libs/trpc';
 
-function App() {
+export function App() {
   const [count, setCount] = useState(0);
   const { data, isLoading } = trpc.example.useQuery();
 
@@ -41,5 +41,3 @@ function App() {
     </>
   );
 }
-
-export default App;
