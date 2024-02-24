@@ -17,7 +17,7 @@ env:
   FORCE_COLOR: 3
   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-  API_URL: ${{ vars.API_URL}}
+  VITE_API_URL: ${{ vars.VITE_API_URL}}
 
 jobs:
   checks:
