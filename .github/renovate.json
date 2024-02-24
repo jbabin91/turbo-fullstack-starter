@@ -9,5 +9,7 @@
   ],
   "updateInternalDeps": true,
   "rangeStrategy": "bump",
-  "automerge": true
+  "automerge": true,
+  "timezone": "America/Phoenix",
+  "schedule": ["schedule:earlyMondays"]
 }

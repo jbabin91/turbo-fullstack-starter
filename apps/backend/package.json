@@ -18,7 +18,7 @@
   "dependencies": {
     "@repo/api": "workspace:^",
     "@trpc/server": "11.0.0-next-beta.294",
-    "hono": "^4.0.5"
+    "hono": "^4.0.6"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240222.0",
