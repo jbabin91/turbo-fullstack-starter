@@ -3,13 +3,13 @@ import { loggerLink, unstable_httpBatchStreamLink } from '@trpc/client';
 import { useState } from 'react';
 import SuperJSON from 'superjson';
 
-import { env } from '../env';
-import { queryClient as QueryClient } from '../libs/react-query';
-import { trpc } from '../libs/trpc';
+import { TanStackQueryDevtools } from '@/components';
+import { env } from '@/configs/env';
+import { queryClient as QueryClient } from '@/libs/react-query';
+import { trpc } from '@/libs/trpc';
 
 export function TRPCReactProvider({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => QueryClient);
-
   const [trpcClient] = useState(() =>
     trpc.createClient({
       links: [
@@ -34,6 +34,7 @@ export function TRPCReactProvider({ children }: { children: React.ReactNode }) {
     <QueryClientProvider client={queryClient}>
       <trpc.Provider client={trpcClient} queryClient={queryClient}>
         {children}
+        <TanStackQueryDevtools />
       </trpc.Provider>
     </QueryClientProvider>
   );
