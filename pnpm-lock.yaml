@@ -151,6 +151,9 @@ importers:
 
   packages/api:
     dependencies:
+      '@trpc/react-query':
+        specifier: 11.0.0-next-beta.294
+        version: 11.0.0-next-beta.294(@tanstack/react-query@5.22.2)(@trpc/client@11.0.0-next-beta.294)(@trpc/server@11.0.0-next-beta.294)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server':
         specifier: 11.0.0-next-beta.294
         version: 11.0.0-next-beta.294
