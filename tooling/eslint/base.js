@@ -8,7 +8,7 @@ const eslintConfig = {
     'plugin:unicorn/recommended',
     'prettier',
   ],
-  ignorePatterns: ['node_modules', 'dist', '.turbo'],
+  ignorePatterns: ['node_modules', 'dist', '.turbo', '*.gen.ts'],
   overrides: [
     {
       extends: [
@@ -23,13 +23,15 @@ const eslintConfig = {
       rules: {
         '@typescript-eslint/consistent-type-imports': [
           'warn',
-          { fixStyle: 'inline-type-imports', prefer: 'type-imports' },
+          { fixStyle: 'separate-type-imports', prefer: 'type-imports' },
         ],
         '@typescript-eslint/no-misused-promises': [
           'error',
           { checksVoidReturn: { attributes: false } },
         ],
         '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
         '@typescript-eslint/no-unused-vars': [
           'error',
           { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
@@ -73,7 +75,7 @@ const eslintConfig = {
   rules: {
     'import/first': 'error',
     'import/newline-after-import': 'error',
-    'import/no-duplicates': ['error', { 'prefer-inline': true }],
+    'import/no-duplicates': 'error',
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': 'error',
     'sort-keys-fix/sort-keys-fix': 'error',
