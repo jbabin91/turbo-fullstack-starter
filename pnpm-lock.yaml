@@ -82,11 +82,11 @@ importers:
         specifier: ^5.24.1
         version: 5.24.1(@tanstack/react-query@5.24.1)(react@18.2.0)
       '@tanstack/react-router':
-        specifier: ^1.16.6
-        version: 1.16.6(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.17.4
+        version: 1.17.4(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/router-devtools':
-        specifier: ^1.16.6
-        version: 1.16.6(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.17.4
+        version: 1.17.4(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/client':
         specifier: 11.0.0-next-beta.294
         version: 11.0.0-next-beta.294(@trpc/server@11.0.0-next-beta.294)
@@ -288,8 +288,8 @@ importers:
         specifier: ^2.0.11
         version: 2.0.11(react-dom@18.2.0)(react@18.2.0)
       sonner:
-        specifier: ^1.4.1
-        version: 1.4.1(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.4.2
+        version: 1.4.2(react-dom@18.2.0)(react@18.2.0)
       tailwind-merge:
         specifier: ^2.2.1
         version: 2.2.1
@@ -2900,8 +2900,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@tanstack/react-router@1.16.6(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-d1Kjs38IF3bH7jKwihMBrdnh7BMVOHSNhJ9sltCiP4gLHcZkG7V9BwwJn5yL4V7YHIPNxdrJ3v4yrkvdrPJ0Ww==}
+  /@tanstack/react-router@1.17.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-iW/TgJN/qZ+Ly73jDU3D2AuC3IlAHGx3ybXTvVuZ1hihsud7arEg7g83hsuU+xbkPcVWfly9ndTb1XKxrovw9w==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16'
@@ -2927,17 +2927,21 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /@tanstack/router-devtools@1.16.6(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-zjyLuStYA1TM4L1IfgQJ1ZCq36o3UVaLLCVmBBHukxbc6n2cKR2U11BXJW5RpkNZDyAPyGcPLEgJ2qcZCYSDcQ==}
+  /@tanstack/router-devtools@1.17.4(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-tt02Xi1WpM/WkSrgmiKDvFa9OsLApWSfxulHVzyl/F9JMulOjqy45s0BxH2PlQSKGHjp8CNIBRyd4Ajs+sIN3A==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@tanstack/react-router': 1.16.6(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-router': 1.17.4(react-dom@18.2.0)(react@18.2.0)
+      clsx: 2.1.0
       date-fns: 2.30.0
+      goober: 2.1.14(csstype@3.1.3)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - csstype
     dev: false
 
   /@tanstack/router-generator@1.16.5:
@@ -5006,6 +5010,14 @@ packages:
       slash: 4.0.0
     dev: true
 
+  /goober@2.1.14(csstype@3.1.3):
+    resolution: {integrity: sha512-4UpC0NdGyAFqLNPnhCT2iHpza2q+RAY3GV85a/mRPdzyPQMsj0KmMMuetdIkzWRbJ+Hgau1EZztq8ImmiMGhsg==}
+    peerDependencies:
+      csstype: ^3.0.10
+    dependencies:
+      csstype: 3.1.3
+    dev: false
+
   /gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
     dependencies:
@@ -6317,7 +6329,7 @@ packages:
     dependencies:
       lilconfig: 3.1.1
       postcss: 8.4.35
-      yaml: 2.3.4
+      yaml: 2.4.0
 
   /postcss-nested@6.0.1(postcss@8.4.35):
     resolution: {integrity: sha512-mEp4xPMi5bSWiMbsgoPfcP74lsWLHkQbZc3sY+jWYd65CUwXrUaTp0fmNpa01ZcETKlIgUdFN/MpS2xZtqL9dQ==}
@@ -6944,8 +6956,8 @@ packages:
       smart-buffer: 4.2.0
     dev: true
 
-  /sonner@1.4.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-KJcFbMF+z2OMSJ9H+N6mrk/ffnEzuyLFlHoza/HQvNyiACoY958VtFdC7xD9D74ttzA+kcS1YIJOsNwbKWDsHw==}
+  /sonner@1.4.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-x3Kfzfhb56V/ErvUnH5dZcsu6QkZpyIlRAogO4vAbN+AkBsA/8CFqOV+5djqbE5pQCpejtO4JBWL1zRj2sO/Vg==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -7858,6 +7870,12 @@ packages:
   /yaml@2.3.4:
     resolution: {integrity: sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==}
     engines: {node: '>= 14'}
+    dev: true
+
+  /yaml@2.4.0:
+    resolution: {integrity: sha512-j9iR8g+/t0lArF4V6NE/QCfT+CO7iLqrXAHZbJdo+LfjqP1vR8Fg5bSiaq6Q2lOD1AUEVrEVIgABvBFYojJVYQ==}
+    engines: {node: '>= 14'}
+    hasBin: true
 
   /yn@3.1.1:
     resolution: {integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==}
