@@ -1,0 +1,1 @@
+ALTER TABLE `posts` RENAME COLUMN `int_modifiers` TO `draft`;
