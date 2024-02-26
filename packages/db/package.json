@@ -1,5 +1,37 @@
 {
-  "name": "db",
-  "version": "0.0.0",
-  "private": true
+  "name": "@repo/db",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "db:check": "pnpm with-env drizzle-kit check:sqlite --config ./drizzle.config.ts",
+    "db:generate": "pnpm with-env drizzle-kit generate:sqlite --config ./drizzle.config.ts",
+    "db:migrate": "pnpm with-env tsx ./src/migrate.ts",
+    "db:studio": "pnpm with-env drizzle-kit studio --config ./drizzle.config.ts",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@repo/eslint-config/base"
+    ],
+    "root": true
+  },
+  "dependencies": {
+    "@libsql/client": "^0.5.2",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.29.4",
+    "postgres": "^3.4.3"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:^",
+    "@repo/tsconfig": "workspace:^",
+    "dotenv-cli": "^7.3.0",
+    "drizzle-kit": "^0.20.14",
+    "tsx": "^4.7.1"
+  }
 }

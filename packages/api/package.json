@@ -16,6 +16,7 @@
     "root": true
   },
   "dependencies": {
+    "@repo/db": "workspace:^",
     "@trpc/react-query": "11.0.0-next-beta.294",
     "@trpc/server": "11.0.0-next-beta.294",
     "superjson": "^2.2.1",
