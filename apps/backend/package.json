@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "dev": "bun run --hot src/index.ts",
+    "dev": "pnpm with-env tsx src/index.ts",
+    "docker:build": "cd ../.. && docker build -t tfs-backend -f ./apps/backend/Dockerfile .",
+    "docker:run:backend": "docker run -it --init --rm -p 8080:8080 --env DATABASE_URL='postgresql://postgres:password@db:5432/db' --network=app_network tfs-backend",
     "lint": "eslint . --max-warnings 0",
-    "preview": "NODE_ENV=production bun run src/index.ts",
-    "start": "NODE_ENV=production bun run src/index.ts",
-    "typecheck": "tsc --noEmit"
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --"
   },
   "eslintConfig": {
     "extends": [
@@ -17,13 +19,16 @@
     "root": true
   },
   "dependencies": {
+    "@hono/node-server": "^1.8.1",
     "@repo/api": "workspace:^",
-    "@trpc/server": "11.0.0-next-beta.289",
-    "hono": "^4.0.5"
+    "@trpc/server": "11.0.0-next-beta.294",
+    "hono": "^4.0.7"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:^",
     "@repo/tsconfig": "workspace:^",
-    "@types/bun": "latest"
+    "@types/node": "^20.11.20",
+    "dotenv-cli": "^7.3.0",
+    "tsx": "^4.7.1"
   }
 }
