@@ -21,6 +21,8 @@ const eslintConfig = {
         project: true,
       },
       rules: {
+        '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+        '@typescript-eslint/consistent-type-exports': 'error',
         '@typescript-eslint/consistent-type-imports': [
           'warn',
           { fixStyle: 'inline-type-imports', prefer: 'type-imports' },
