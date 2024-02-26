@@ -1,14 +1,17 @@
-import './App.css';
-
-import { Button, ModeToggle } from '@repo/ui';
+import { Button } from '@repo/ui';
+import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 
 import viteLogo from '/vite.svg';
 
-import reactLogo from './assets/react.svg';
-import { trpc } from './libs/trpc';
+import reactLogo from '../assets/react.svg';
+import { trpc } from '../libs/trpc';
 
-function App() {
+export const Route = createFileRoute('/')({
+  component: IndexComponent,
+});
+
+function IndexComponent() {
   const [count, setCount] = useState(0);
   const { data, isLoading } = trpc.example.useQuery();
 
@@ -28,7 +31,6 @@ function App() {
           <Button onClick={() => setCount((count) => count + 1)}>
             count is {count}
           </Button>
-          <ModeToggle />
         </div>
         <p className="pt-4">
           Edit <code>src/App.tsx</code> and save to test HMR
@@ -41,5 +43,3 @@ function App() {
     </>
   );
 }
-
-export default App;

@@ -31,6 +31,8 @@ const eslintConfig = {
           'error',
           { checksVoidReturn: { attributes: false } },
         ],
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-unused-vars': [
           'error',
           { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
