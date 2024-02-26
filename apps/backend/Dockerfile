@@ -1,20 +1,51 @@
-# use the official Bun image
-# see all versions at https://hub.docker.com/r/oven/bun/tags
-FROM oven/bun:1
+# syntax = docker/dockerfile:1
 
-ENV NODE_ENV=production
-ENV TURBO_TELEMETRY_DISABLED=1
+ARG APP_DIRNAME=backend
+ARG APP_PKG_NAME=backend
 
-RUN mkdir -p /usr/src/app
-RUN chmod +rwx /usr/src/app
-WORKDIR /usr/src/app
+# Adjust NODE_VERSION as desired
+ARG NODE_VERSION=20.11.1
+FROM node:${NODE_VERSION}-alpine as pruner
+ARG APP_PKG_NAME
+RUN apk update
+RUN apk add --no-cache libc6-compat
 
-# COPY Project
+LABEL fly_launch_runtime="NodeJS"
+
+WORKDIR /app
+RUN yarn global add turbo
 COPY . .
+RUN turbo prune --scope=$APP_PKG_NAME --docker
+RUN find . -name "node_modules" -type d -prune -exec rm -rf '{}' +
 
-# Temp solution for bun
-RUN bun install --ignore-scripts
+# Set production environment
+# ENV NODE_ENV=production
+# ENV TURBO_TELEMETRY_DEBUG=1
+# ENV PNPM_HOME="/pnpm"
+# ENV PATH="$PNPM_HOME:$PATH"
 
-# run the app
-EXPOSE 3000
-CMD ["bun", "run", "turbo", "run", "start", "--filter=backend"]
+# RUN corepack enable
+
+FROM node:${NODE_VERSION}-alpine as base
+RUN apk update
+RUN apk add --no-cache libc6-compat
+RUN corepack enable
+WORKDIR /app
+COPY .gitignore .gitignore
+COPY --from=pruner /app/out/json/ .
+COPY --from=pruner /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY --from=pruner /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
+
+FROM base as deps
+WORKDIR /app
+RUN pnpm install
+
+FROM base as runner
+ARG APP_DIRNAME
+
+ENV NODE_ENV production
+
+COPY --from=pruner /app/out/full/ .
+COPY --from=deps /app .
+
+CMD ["pnpm", "run", "--filter", "backend", "start"]
