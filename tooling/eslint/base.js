@@ -8,7 +8,7 @@ const eslintConfig = {
     'plugin:unicorn/recommended',
     'prettier',
   ],
-  ignorePatterns: ['node_modules', 'dist', '.turbo'],
+  ignorePatterns: ['node_modules', 'dist', '.turbo', '*.gen.ts'],
   overrides: [
     {
       extends: [
@@ -24,7 +24,7 @@ const eslintConfig = {
         '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
         '@typescript-eslint/consistent-type-exports': 'error',
         '@typescript-eslint/consistent-type-imports': [
-          'warn',
+          'error',
           { fixStyle: 'inline-type-imports', prefer: 'type-imports' },
         ],
         '@typescript-eslint/no-misused-promises': [
