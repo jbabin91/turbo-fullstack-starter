@@ -1,19 +1,19 @@
 {
   "version": "5",
-  "dialect": "sqlite",
+  "dialect": "pg",
   "entries": [
     {
       "idx": 0,
       "version": "5",
-      "when": 1708847587279,
-      "tag": "0000_flaky_monster_badoon",
+      "when": 1708972733486,
+      "tag": "0000_real_stephen_strange",
       "breakpoints": true
     },
     {
       "idx": 1,
       "version": "5",
-      "when": 1708848008465,
-      "tag": "0001_noisy_the_call",
+      "when": 1708972908081,
+      "tag": "0001_icy_russian",
       "breakpoints": true
     }
   ]

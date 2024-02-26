@@ -39,3 +39,7 @@ services:
 networks:
   app_network:
     external: true
+# networks:
+#   default:
+#     name: nfs_network
+#     driver: bridge

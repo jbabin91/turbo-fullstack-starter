@@ -7,9 +7,10 @@
   },
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "db:check": "pnpm with-env drizzle-kit check:sqlite --config ./drizzle.config.ts",
-    "db:generate": "pnpm with-env drizzle-kit generate:sqlite --config ./drizzle.config.ts",
+    "db:check": "pnpm with-env drizzle-kit check:pg --config ./drizzle.config.ts",
+    "db:generate": "pnpm with-env drizzle-kit generate:pg --config ./drizzle.config.ts",
     "db:migrate": "pnpm with-env tsx ./src/migrate.ts",
+    "db:seed": "pnpm with-env tsx ./src/seed.ts",
     "db:studio": "pnpm with-env drizzle-kit studio --config ./drizzle.config.ts",
     "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc --noEmit",
@@ -22,12 +23,12 @@
     "root": true
   },
   "dependencies": {
-    "@libsql/client": "^0.5.2",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.29.4",
     "postgres": "^3.4.3"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@repo/eslint-config": "workspace:^",
     "@repo/tsconfig": "workspace:^",
     "dotenv-cli": "^7.3.0",

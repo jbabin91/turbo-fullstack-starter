@@ -21,6 +21,7 @@
     "db:migrate": {
       "cache": false
     },
+    "db:seed": {},
     "db:studio": {},
     "dev": {
       "cache": false,

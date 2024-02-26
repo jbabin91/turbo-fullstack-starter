@@ -1,12 +1,25 @@
-import type { InferInsertModel, InferSelectModel } from 'drizzle-orm';
-import { relations, sql } from 'drizzle-orm';
-import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import {
+  type InferInsertModel,
+  type InferSelectModel,
+  relations,
+} from 'drizzle-orm';
+import {
+  boolean,
+  integer,
+  pgTable,
+  serial,
+  text,
+  timestamp,
+} from 'drizzle-orm/pg-core';
 
-export const users = sqliteTable('users', {
-  createdAt: text('created_at')
+export const users = pgTable('users', {
+  createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
-    .default(sql`CURRENT_TIMESTAMP`),
-  id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
+    .defaultNow(),
+  // TODO: Look into switching id to cuid.
+  // import { createdId } from "@paralleldrive/cuid2";
+  // id: text('id').$defaultFn(() => createId()),
+  id: serial('id').primaryKey(),
   name: text('name').notNull(),
 });
 
@@ -17,13 +30,13 @@ export const usersRelations = relations(users, ({ many }) => ({
   posts: many(posts),
 }));
 
-export const posts = sqliteTable('posts', {
+export const posts = pgTable('posts', {
   content: text('content').notNull(),
-  createdAt: text('created_at')
+  createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
-    .default(sql`CURRENT_TIMESTAMP`),
-  draft: integer('draft', { mode: 'boolean' }).notNull().default(false),
-  id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
+    .defaultNow(),
+  draft: boolean('draft').notNull().default(false),
+  id: serial('id').primaryKey(),
   title: text('title').notNull(),
   userId: integer('user_id')
     .notNull()
