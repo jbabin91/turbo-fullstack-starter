@@ -3,7 +3,7 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 app = 'tfs-backend'
-primary_region = 'phx'
+primary_region = 'lax'
 
 [build]
   dockerfile = "Dockerfile"
