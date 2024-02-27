@@ -8,7 +8,8 @@ export const Route = createFileRoute('/about')({
 });
 
 function AboutComponent() {
-  const { data, isLoading } = trpc.posts.list.useQuery();
+  const { data, isLoading } = trpc.posts.getAll.useQuery();
+
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="mb-3">

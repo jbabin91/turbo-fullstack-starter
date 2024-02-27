@@ -8,7 +8,7 @@ export const Route = createFileRoute('/posts')({
 });
 
 function PostsLayout() {
-  const { data } = trpc.posts.list.useQuery();
+  const { data } = trpc.posts.getAll.useQuery();
 
   return (
     <div className="flex grow flex-col gap-y-5 overflow-y-auto ring-1 ring-white/10">
