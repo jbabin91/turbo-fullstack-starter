@@ -35,7 +35,9 @@
     "@repo/tsconfig": "workspace:^",
     "dotenv-cli": "^7.3.0",
     "drizzle-kit": "^0.20.14",
+    "drizzle-zod": "^0.5.1",
     "pg": "^8.11.3",
-    "tsx": "^4.7.1"
+    "tsx": "^4.7.1",
+    "zod": "^3.22.4"
   }
 }

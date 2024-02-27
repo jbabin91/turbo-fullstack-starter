@@ -2,9 +2,10 @@
   "name": "backend",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "dev": "pnpm with-env tsx src/index.ts",
+    "dev": "pnpm with-env tsx watch src/index.ts",
     "docker:build": "cd ../.. && docker build -t tfs-backend -f ./apps/backend/Dockerfile .",
     "docker:run:backend": "docker run -it --init --rm -p 8080:8080 --env DATABASE_URL='postgresql://postgres:password@db:5432/db' --network=app_network tfs-backend",
     "lint": "eslint . --max-warnings 0",

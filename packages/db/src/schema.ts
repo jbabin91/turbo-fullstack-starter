@@ -11,6 +11,7 @@ import {
   text,
   timestamp,
 } from 'drizzle-orm/pg-core';
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
 
 export const users = pgTable('users', {
   createdAt: timestamp('created_at', { withTimezone: true })
@@ -24,7 +25,11 @@ export const users = pgTable('users', {
 });
 
 export type User = InferSelectModel<typeof users>;
+export const selectUserSchema = createSelectSchema(users);
+
 export type NewUser = InferInsertModel<typeof users>;
+export const insertUserSchema = createInsertSchema(users);
+export const updateUserSchema = insertUserSchema.partial();
 
 export const usersRelations = relations(users, ({ many }) => ({
   posts: many(posts),
@@ -44,7 +49,11 @@ export const posts = pgTable('posts', {
 });
 
 export type Post = InferSelectModel<typeof posts>;
+export const selectPostSchema = createSelectSchema(posts);
+
 export type NewPost = InferInsertModel<typeof posts>;
+export const insertPostSchema = createInsertSchema(posts);
+export const updatePostSchema = insertPostSchema.partial();
 
 export const postsRelations = relations(posts, ({ one }) => ({
   takeout: one(users, {

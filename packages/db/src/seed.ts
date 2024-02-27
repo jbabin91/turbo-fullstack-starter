@@ -25,9 +25,6 @@ const main = async () => {
     })
     .from(posts);
 
-  console.log('countUsers', countUsers[0]?.usersCount);
-  console.log('countPosts', countPosts[0]?.postsCount);
-
   if (
     (countUsers[0] && countUsers[0]?.usersCount > 0) ??
     (countPosts[0] && countPosts[0]?.postsCount > 0)

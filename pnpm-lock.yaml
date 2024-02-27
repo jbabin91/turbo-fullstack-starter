@@ -210,12 +210,18 @@ importers:
       drizzle-kit:
         specifier: ^0.20.14
         version: 0.20.14
+      drizzle-zod:
+        specifier: ^0.5.1
+        version: 0.5.1(drizzle-orm@0.29.4)(zod@3.22.4)
       pg:
         specifier: ^8.11.3
         version: 8.11.3
       tsx:
         specifier: ^4.7.1
         version: 4.7.1
+      zod:
+        specifier: ^3.22.4
+        version: 3.22.4
 
   packages/ui:
     dependencies:
@@ -4519,7 +4525,6 @@ packages:
     dependencies:
       pg: 8.11.3
       postgres: 3.4.3
-    dev: false
 
   /drizzle-orm@0.29.4(react@18.2.0):
     resolution: {integrity: sha512-ZnSM8TAxFhzH7p1s3+w3pRE/eKaOeNkH9SKitm717pubDVVcV2I0BCDBPGKV+pe02+wMfw37ntlTcCyo2rA3IA==}
@@ -4594,6 +4599,16 @@ packages:
     dependencies:
       react: 18.2.0
     dev: false
+
+  /drizzle-zod@0.5.1(drizzle-orm@0.29.4)(zod@3.22.4):
+    resolution: {integrity: sha512-C/8bvzUH/zSnVfwdSibOgFjLhtDtbKYmkbPbUCq46QZyZCH6kODIMSOgZ8R7rVjoI+tCj3k06MRJMDqsIeoS4A==}
+    peerDependencies:
+      drizzle-orm: '>=0.23.13'
+      zod: '*'
+    dependencies:
+      drizzle-orm: 0.29.4(pg@8.11.3)(postgres@3.4.3)
+      zod: 3.22.4
+    dev: true
 
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -7128,7 +7143,6 @@ packages:
   /postgres@3.4.3:
     resolution: {integrity: sha512-iHJn4+M9vbTdHSdDzNkC0crHq+1CUdFhx+YqCE+SqWxPjm+Zu63jq7yZborOBF64c8pc58O5uMudyL1FQcHacA==}
     engines: {node: '>=12'}
-    dev: false
 
   /prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
