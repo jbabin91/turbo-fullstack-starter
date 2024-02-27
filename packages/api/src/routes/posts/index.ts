@@ -1,5 +1,5 @@
 import { db, posts } from '@repo/db';
-import { eq } from 'drizzle-orm';
+import { asc, eq } from 'drizzle-orm';
 import { z } from 'zod';
 
 import { publicProcedure, router } from '../../trpc';
@@ -18,7 +18,7 @@ export const postsRouter = router({
       return post;
     }),
   list: publicProcedure.query(() => {
-    const data = db.select().from(posts);
+    const data = db.select().from(posts).orderBy(asc(posts.id));
     return data;
   }),
 });
