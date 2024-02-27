@@ -5,7 +5,7 @@ import { useState } from 'react';
 import viteLogo from '/vite.svg';
 
 import reactLogo from '../assets/react.svg';
-import { trpc } from '../libs/trpc';
+import { trpc } from '../libs';
 
 export const Route = createFileRoute('/')({
   component: IndexComponent,
@@ -16,7 +16,7 @@ function IndexComponent() {
   const { data, isLoading } = trpc.example.useQuery();
 
   return (
-    <>
+    <div className="flex flex-col items-center justify-center">
       <div className="flex flex-row items-center justify-center">
         <a href="https://vitejs.dev" rel="noreferrer" target="_blank">
           <img alt="Vite logo" className="logo" src={viteLogo} />
@@ -25,7 +25,9 @@ function IndexComponent() {
           <img alt="React logo" className="logo react" src={reactLogo} />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+        Vite + React
+      </h1>
       <div className="p-[2em]">
         <div className="flex flex-row justify-center gap-4">
           <Button onClick={() => setCount((count) => count + 1)}>
@@ -40,6 +42,6 @@ function IndexComponent() {
         Click on the Vite and React logos to learn more
       </p>
       <p>Message from api: {isLoading ? 'Loading....' : data?.message}</p>
-    </>
+    </div>
   );
 }
