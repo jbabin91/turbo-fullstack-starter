@@ -18,14 +18,6 @@ COPY . .
 RUN turbo prune --scope=$APP_PKG_NAME --docker
 RUN find . -name "node_modules" -type d -prune -exec rm -rf '{}' +
 
-# Set production environment
-# ENV NODE_ENV=production
-# ENV TURBO_TELEMETRY_DEBUG=1
-# ENV PNPM_HOME="/pnpm"
-# ENV PATH="$PNPM_HOME:$PATH"
-
-# RUN corepack enable
-
 FROM node:${NODE_VERSION}-alpine as base
 RUN apk update
 RUN apk add --no-cache libc6-compat

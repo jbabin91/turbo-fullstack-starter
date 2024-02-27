@@ -10,9 +10,6 @@ primary_region = 'phx'
 [build.args]
   PROJECT = "backend"
 
-[deploy]
-  release_command = "pnpm dlx tsx ./packages/db/src/migrate.ts"
-
 [env]
   PORT = '8080'
 
