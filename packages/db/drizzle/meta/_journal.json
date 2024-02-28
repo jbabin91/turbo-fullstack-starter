@@ -15,6 +15,13 @@
       "when": 1709157718137,
       "tag": "0001_sparkling_ben_parker",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1709159952920,
+      "tag": "0002_bright_martin_li",
+      "breakpoints": true
     }
   ]
 }

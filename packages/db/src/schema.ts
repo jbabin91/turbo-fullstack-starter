@@ -14,8 +14,12 @@ export const users = pgTable('users', {
     .primaryKey(),
   name: text('name').notNull(),
   username: text('username').notNull().unique(),
+  email: text('email').notNull().unique(),
   password: text('password').notNull(),
   createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()
     .defaultNow(),
 });
@@ -24,7 +28,10 @@ export type User = InferSelectModel<typeof users>;
 export const selectUserSchema = createSelectSchema(users);
 
 export type NewUser = InferInsertModel<typeof users>;
-export const insertUserSchema = createInsertSchema(users);
+export const insertUserSchema = createInsertSchema(users, {
+  email: (schema) => schema.email.email('Email address is not valid'),
+  password: (schema) => schema.password.min(8).max(24),
+});
 export const updateUserSchema = insertUserSchema.partial();
 
 export const usersRelations = relations(users, ({ many }) => ({
@@ -53,6 +60,9 @@ export const posts = pgTable('posts', {
     .notNull()
     .references(() => users.id),
   createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()
     .defaultNow(),
 });
