@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@repo/ui';
 import { createFileRoute } from '@tanstack/react-router';
 
-import { trpc } from '../libs';
+import { trpc } from '@/libs';
 
 export const Route = createFileRoute('/about')({
   component: AboutComponent,

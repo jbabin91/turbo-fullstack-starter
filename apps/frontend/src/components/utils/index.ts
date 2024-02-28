@@ -1,2 +1,2 @@
-export * from './TanstackQueryDevtools';
-export * from './TanstackRouterDevtools';
+export * from './TanStackQueryDevtools';
+export * from './TanStackRouterDevtools';

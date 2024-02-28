@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@repo/ui';
 import { createFileRoute } from '@tanstack/react-router';
 import { z } from 'zod';
 
-import { trpc } from '../../../libs/trpc';
+import { trpc } from '@/libs';
 
 export const Route = createFileRoute('/posts/$postId/')({
   component: PostComponent,

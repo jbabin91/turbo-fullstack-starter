@@ -1,7 +1,7 @@
 import { TailwindIndicator } from '@repo/ui';
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 
-import { Header, TanstackRouterDevtools } from '../components';
+import { Header, TanStackRouterDevtools } from '@/components';
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -14,7 +14,7 @@ function RootComponent() {
       <main className="relative isolate overflow-hidden pt-16">
         <Outlet />
       </main>
-      <TanstackRouterDevtools position="bottom-left" />
+      <TanStackRouterDevtools position="bottom-left" />
       <TailwindIndicator />
     </>
   );

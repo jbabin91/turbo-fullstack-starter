@@ -19,8 +19,6 @@ const config = {
   allowEmptyIssuePrefix: false,
   prompt: {
     scopes,
-    enableMultipleScopes: true,
-    scopeEnumSeparator: ',',
     useEmoji: true,
   },
   skipQuestions: ['footer'],

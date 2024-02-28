@@ -2,8 +2,8 @@ import { createRouter, RouterProvider } from '@tanstack/react-router';
 import { Suspense } from 'react';
 
 import { Spinner } from '@/components';
+import { routeTree } from '@/routeTree.gen';
 
-import { routeTree } from '../routeTree.gen';
 import { TRPCReactProvider } from './TrpcReactProvider';
 
 const router = createRouter({

@@ -1,4 +1,4 @@
-import './styles/globals.css';
+import '@/styles/globals.css';
 import '@fontsource/geist-mono';
 import '@fontsource/geist-sans';
 

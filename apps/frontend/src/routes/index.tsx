@@ -3,9 +3,8 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 
 import viteLogo from '/vite.svg';
-
-import reactLogo from '../assets/react.svg';
-import { trpc } from '../libs';
+import reactLogo from '@/assets/react.svg';
+import { trpc } from '@/libs';
 
 export const Route = createFileRoute('/')({
   component: IndexComponent,
