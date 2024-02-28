@@ -12,9 +12,28 @@
     "clean": {
       "cache": false
     },
+    "db:check": {
+      "cache": false
+    },
+    "db:generate": {
+      "cache": false
+    },
+    "db:migrate": {
+      "cache": false
+    },
+    "db:seed": {},
+    "db:studio": {},
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "docker:build": {
+      "outputs": [],
+      "cache": false
+    },
+    "docker:run:backend": {
+      "outputs": [],
+      "cache": false
     },
     "lint": {
       "dependsOn": ["^topo"],
@@ -23,10 +42,21 @@
     "preview": {
       "dependsOn": ["^build"]
     },
+    "start": {
+      "cache": false,
+      "persistent": true
+    },
     "typecheck": {
       "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/tsbuildinfo.json"]
     }
   },
-  "globalEnv": ["API_URL", "DATABASE_URL", "NODE_ENV", "PORT"]
+  "globalEnv": [
+    "API_URL",
+    "DATABASE_URL",
+    "NODE_ENV",
+    "PORT",
+    "TURSO_URL",
+    "TURSO_AUTH_TOKEN"
+  ]
 }

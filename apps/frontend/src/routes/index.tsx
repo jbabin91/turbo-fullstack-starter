@@ -1,16 +1,16 @@
-import { Button, ModeToggle } from '@repo/ui';
+import { Button } from '@repo/ui';
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 
 import viteLogo from '/vite.svg';
 import reactLogo from '@/assets/react.svg';
-import { trpc } from '@/libs/trpc';
+import { trpc } from '@/libs';
 
 export const Route = createFileRoute('/')({
-  component: HomeComponent,
+  component: IndexComponent,
 });
 
-function HomeComponent() {
+function IndexComponent() {
   const [count, setCount] = useState(0);
   const { data, isLoading } = trpc.example.useQuery();
 
@@ -24,13 +24,14 @@ function HomeComponent() {
           <img alt="React logo" className="logo react" src={reactLogo} />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+        Vite + React
+      </h1>
       <div className="p-[2em]">
         <div className="flex flex-row justify-center gap-4">
           <Button onClick={() => setCount((count) => count + 1)}>
             count is {count}
           </Button>
-          <ModeToggle />
         </div>
         <p className="pt-4">
           Edit <code>src/App.tsx</code> and save to test HMR

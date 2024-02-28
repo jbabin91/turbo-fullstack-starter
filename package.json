@@ -5,7 +5,14 @@
   "scripts": {
     "build": "turbo build",
     "clean": "git clean -xdf node_modules",
+    "db:check": "turbo db:check",
+    "db:generate": "turbo db:generate",
+    "db:migrate": "turbo db:migrate",
+    "db:seed": "turbo db:seed",
+    "db:studio": "turbo db:studio",
     "dev": "turbo dev --parallel",
+    "docker:build": "turbo docker:build",
+    "docker:run:backend": "turbo docker:run:backend",
     "format": "prettier -uw --cache .",
     "format:check": "prettier -uc --cache .",
     "preinstall": "npx only-allow pnpm",
@@ -15,6 +22,7 @@
     "lint:ws": "pnpm dlx sherif@latest",
     "prepare": "is-ci || husky",
     "preview": "turbo preview",
+    "start": "turbo start",
     "typecheck": "turbo typecheck"
   },
   "lint-staged": {
@@ -35,7 +43,7 @@
     "prettier-plugin-packagejson": "^2.4.12",
     "turbo": "^1.12.4",
     "typescript": "^5.3.3",
-    "wrangler": "^3.29.0"
+    "wrangler": "^3.30.0"
   },
   "packageManager": "pnpm@8.15.4"
 }

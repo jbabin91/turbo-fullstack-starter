@@ -8,7 +8,7 @@
     "clean": "rm -rf .turbo node_modules",
     "dev": "pnpm with-env vite",
     "lint": "eslint . --max-warnings 0",
-    "preview": "pnpm with-env vite preview",
+    "preview": "pnpm build && pnpm with-env vite preview",
     "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"
   },
@@ -39,7 +39,7 @@
     "@repo/tailwind-config": "workspace:^",
     "@repo/tsconfig": "workspace:^",
     "@tanstack/router-vite-plugin": "^1.16.5",
-    "@types/react": "^18.2.58",
+    "@types/react": "^18.2.60",
     "@types/react-dom": "^18.2.19",
     "@vitejs/plugin-react-swc": "^3.6.0",
     "autoprefixer": "^10.4.17",

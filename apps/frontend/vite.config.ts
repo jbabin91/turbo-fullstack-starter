@@ -17,8 +17,11 @@ export default defineConfig(() => {
           chunkFileNames: 'js/[name]-[hash].js',
           entryFileNames: 'js/[name]-[hash].js',
           manualChunks: {
+            query: ['@tanstack/react-query'],
             react: ['react', 'react-dom'],
             repo: ['@repo/ui'],
+            router: ['@tanstack/react-router'],
+            trpc: ['@trpc/client', '@trpc/react-query'],
           },
         },
       },

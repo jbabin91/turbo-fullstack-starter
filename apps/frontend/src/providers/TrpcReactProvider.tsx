@@ -4,9 +4,8 @@ import { useState } from 'react';
 import SuperJSON from 'superjson';
 
 import { TanStackQueryDevtools } from '@/components';
-import { env } from '@/configs/env';
-import { queryClient as QueryClient } from '@/libs/react-query';
-import { trpc } from '@/libs/trpc';
+import { env } from '@/configs';
+import { queryClient as QueryClient, trpc } from '@/libs';
 
 export function TRPCReactProvider({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => QueryClient);
@@ -34,7 +33,7 @@ export function TRPCReactProvider({ children }: { children: React.ReactNode }) {
     <QueryClientProvider client={queryClient}>
       <trpc.Provider client={trpcClient} queryClient={queryClient}>
         {children}
-        <TanStackQueryDevtools />
+        <TanStackQueryDevtools initialIsOpen={false} />
       </trpc.Provider>
     </QueryClientProvider>
   );

@@ -2,9 +2,10 @@
   "name": "@repo/api",
   "version": "0.1.0",
   "private": true,
-  "exports": {
-    ".": "./src/index.ts"
-  },
+  "sideEffects": false,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint . --max-warnings 0",
@@ -17,8 +18,10 @@
     "root": true
   },
   "dependencies": {
+    "@repo/db": "workspace:^",
     "@trpc/react-query": "11.0.0-next-beta.294",
     "@trpc/server": "11.0.0-next-beta.294",
+    "drizzle-orm": "^0.29.4",
     "superjson": "^2.2.1",
     "zod": "^3.22.4"
   },

@@ -1,3 +1,4 @@
+import { serve } from '@hono/node-server';
 import { appRouter, createTRPCContext } from '@repo/api';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
@@ -34,4 +35,7 @@ app.use(
   }),
 );
 
-export default app;
+serve({
+  fetch: app.fetch,
+  port: Number(process.env.PORT ?? 8080),
+});

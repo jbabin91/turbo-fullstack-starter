@@ -5,7 +5,8 @@ runs:
   using: composite
   steps:
     - uses: pnpm/action-setup@v3
-    - uses: actions/setup-node@v4
+    - name: ⎔ Setup Node.js
+      uses: actions/setup-node@v4
       with:
         node-version-file: .nvmrc
         cache: pnpm
@@ -14,5 +15,6 @@ runs:
     - shell: bash
       run: pnpm add -g turbo
 
-    - shell: bash
+    - name: 📥 Download deps
+      shell: bash
       run: pnpm install

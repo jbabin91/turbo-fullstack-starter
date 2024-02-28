@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: tfs-db
+    restart: always
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+    volumes:
+      - .container/db-data:/var/lib/postgresql/data
+    networks:
+      - app_network
+  pgadmin:
+    image: elestio/pgadmin:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@email.com
+      PGADMIN_DEFAULT_PASSWORD: strong-password
+    ports:
+      - 8888:80
+    volumes:
+      - .container/pgadmin-data:/var/lib/pgadmin
+    networks:
+      - app_network
+  # redis:
+  #   image: redis:latest
+  #   container_name: redis
+  #   restart: always
+  #   ports:
+  #     - '6379:6379'
+  #   volumes:
+  #     - ./.containers/redis:/data
+
+networks:
+  app_network:
+    external: true
+# networks:
+#   default:
+#     name: nfs_network
+#     driver: bridge

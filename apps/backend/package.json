@@ -2,12 +2,16 @@
   "name": "backend",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "deploy": "wrangler deploy --minify src/index.ts",
-    "dev": "wrangler dev src/index.ts",
+    "dev": "pnpm with-env tsx watch src/index.ts",
+    "docker:build": "cd ../.. && docker build -t tfs-backend -f ./apps/backend/Dockerfile .",
+    "docker:run:backend": "docker run -it --init --rm -p 8080:8080 --env DATABASE_URL='postgresql://postgres:password@db:5432/db' --network=app_network tfs-backend",
     "lint": "eslint . --max-warnings 0",
-    "typecheck": "tsc --noEmit"
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --"
   },
   "eslintConfig": {
     "extends": [
@@ -16,14 +20,16 @@
     "root": true
   },
   "dependencies": {
+    "@hono/node-server": "^1.8.2",
     "@repo/api": "workspace:^",
     "@trpc/server": "11.0.0-next-beta.294",
-    "hono": "^4.0.7"
+    "hono": "^4.0.8"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240222.0",
     "@repo/eslint-config": "workspace:^",
     "@repo/tsconfig": "workspace:^",
-    "wrangler": "^3.29.0"
+    "@types/node": "^20.11.22",
+    "dotenv-cli": "^7.3.0",
+    "tsx": "^4.7.1"
   }
 }

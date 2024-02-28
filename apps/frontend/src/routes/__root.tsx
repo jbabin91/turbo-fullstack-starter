@@ -1,6 +1,7 @@
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router';
+import { TailwindIndicator } from '@repo/ui';
+import { createRootRoute, Outlet } from '@tanstack/react-router';
 
-import { TanStackRouterDevtools } from '@/components/utils';
+import { Header, TanStackRouterDevtools } from '@/components';
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -8,24 +9,13 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <div className="h-screen w-screen">
-      <div className="flex gap-2 p-2 text-lg">
-        <Link
-          activeOptions={{ exact: true }}
-          activeProps={{ className: 'font-bold' }}
-          to="/"
-        >
-          Home
-        </Link>
-        <Link activeProps={{ className: 'font-bold' }} to="/about">
-          About
-        </Link>
-      </div>
-      <hr />
-      <main className="container mx-auto max-w-7xl">
+    <>
+      <Header />
+      <main className="relative isolate overflow-hidden pt-16">
         <Outlet />
       </main>
-      <TanStackRouterDevtools />
-    </div>
+      <TanStackRouterDevtools position="bottom-left" />
+      <TailwindIndicator />
+    </>
   );
 }

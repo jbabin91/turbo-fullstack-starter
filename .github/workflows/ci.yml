@@ -1,15 +1,20 @@
-name: CI
+name: 🚀 CI
 
 on:
-  pull_request:
-    branches: ['*']
   push:
-    branches: ['main']
+    branches:
+      - main
+      - develop
+  pull_request: {}
   merge_group:
+
+permissions:
+  actions: write
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/head/develop' }}
 
 # You can leverage Vercel Remote Caching with Turbo to speed up your builds
 # @link https://turborepo.org/docs/core-concepts/remote-caching#remote-caching-on-vercel-builds
@@ -18,29 +23,38 @@ env:
   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   VITE_API_URL: ${{ vars.VITE_API_URL}}
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
 jobs:
   checks:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+      - name: 📥 Setup
         uses: ./tooling/github/setup
-      - name: Copy env
+      - name: 🏄 Copy env
         run: cp .env.example .env
-      - name: Branch checks
+      - name: 🔎 Branch checks
         uses: ./tooling/github/branch-checks
-      - name: Build Apps
+      - name: ⚙️ Build
         uses: ./tooling/github/build-app
 
   deploy-frontend:
+    name: 🚀 Deploy (Frontend)
     runs-on: ubuntu-latest
     needs: checks
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+      - name: 📥 Setup
         uses: ./tooling/github/setup
-      - name: Build Apps
+      - name: ⚙️ Build
         uses: ./tooling/github/build-app
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
@@ -49,14 +63,46 @@ jobs:
           command: pages deploy apps/frontend/dist --project-name=tfs-frontend --commit-dirty=true
 
   deploy-backend:
+    name: 🚀 Deploy (Backend)
     runs-on: ubuntu-latest
     needs: checks
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 📥 Setup
         uses: ./tooling/github/setup
-      - name: Deploy
-        uses: cloudflare/wrangler-action@v3
+
+      - name: 🛠 Run Migrations
+        run: pnpm db:migrate
+
+      - name: 👀 Read app name
+        uses: SebRollen/toml-action@v1.2.0
+        id: app_name
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: deploy apps/backend/src/index.ts --minify
+          file: 'apps/backend/fly.toml'
+          field: 'app'
+
+      - name: 🎈 Setup Fly
+        uses: superfly/flyctl-actions/setup-flyctl@1.5
+
+      - name: 🚀 Deploy Staging
+        if: ${{ github.ref == 'refs/heads/develop' }}
+        run:
+          flyctl deploy --remote-only --build-arg COMMIT_SHA=${{ github.sha }}
+          --app ${{ steps.app_name.outputs.value }}-staging
+          --config ./apps/backend/fly.toml
+          --dockerfile ./apps/backend/Dockerfile
+          --ignorefile ./apps/backend/.dockerignore
+
+      - name: 🚀 Deploy Production
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run:
+          flyctl deploy --remote-only --build-arg COMMIT_SHA=${{ github.sha }}
+          --app ${{ steps.app_name.outputs.value }}
+          --config ./apps/backend/fly.toml
+          --dockerfile ./apps/backend/Dockerfile
+          --ignorefile ./apps/backend/.dockerignore

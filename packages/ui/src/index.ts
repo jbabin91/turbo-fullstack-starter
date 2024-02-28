@@ -2,7 +2,9 @@
 export * from './components/providers/theme-provider';
 
 // Custom Components
+export * from './components/icons';
 export * from './components/mode-toggle';
+export * from './components/tailwind-indicator';
 
 // UI Components
 export * from './components/ui/accordion';
