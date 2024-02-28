@@ -8,6 +8,8 @@ const adapter = new DrizzlePostgreSQLAdapter(db, sessions, users);
 export const lucia = new Lucia(adapter, {
   getUserAttributes: (attributes) => {
     return {
+      email: attributes.email,
+      name: attributes.name,
       username: attributes.username,
     };
   },
