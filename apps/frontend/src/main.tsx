@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom/client';
 
 import { Providers } from '@/providers';
 
-ReactDOM.createRoot(document.querySelector('#root')!).render(
+ReactDOM.createRoot(document.querySelector('#app')!).render(
   <React.StrictMode>
     <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
       <Providers />

@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 
-import { env } from '@/configs/env';
+import { env } from '@/configs';
 
 export const TanStackRouterDevtools = env.PROD
   ? () => null // Render nothing in production
