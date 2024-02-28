@@ -25,6 +25,7 @@
     "root": true
   },
   "dependencies": {
+    "@paralleldrive/cuid2": "^2.2.2",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.29.4",
     "postgres": "^3.4.3"
