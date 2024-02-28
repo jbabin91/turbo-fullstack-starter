@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for tfs-backend on 2024-02-24T20:30:19-07:00
+# fly.toml app configuration file generated for tfs-backend on 2024-02-27T10:22:27-07:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -6,9 +6,7 @@ app = 'tfs-backend'
 primary_region = 'lax'
 
 [build]
-  dockerfile = "Dockerfile"
-[build.args]
-  PROJECT = "backend"
+  dockerfile = 'Dockerfile'
 
 [env]
   PORT = '8080'
