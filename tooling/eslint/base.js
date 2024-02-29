@@ -31,6 +31,7 @@ const eslintConfig = {
           'error',
           { checksVoidReturn: { attributes: false } },
         ],
+        '@typescript-eslint/no-unsafe-argument': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',
@@ -48,12 +49,7 @@ const eslintConfig = {
         'plugin:jsx-a11y/recommended',
       ],
       files: ['*.jsx', '*.tsx'],
-      plugins: ['react-refresh'],
       rules: {
-        'react-refresh/only-export-components': [
-          'warn',
-          { allowConstantExport: true },
-        ],
         'react/jsx-sort-props': [
           'error',
           {
