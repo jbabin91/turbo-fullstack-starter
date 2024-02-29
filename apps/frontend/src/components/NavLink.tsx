@@ -7,15 +7,17 @@ type NavLinkProps = {
 
 export function NavLink({ title, className, ...props }: NavLinkProps) {
   return (
-    <Button asChild variant="ghost">
+    <Button
+      className={cn(
+        'text-base font-semibold leading-7 dark:hover:text-blue-500',
+        className,
+      )}
+      variant="link"
+    >
       <Link
         activeProps={{
           className: 'font-bold text-blue-400',
         }}
-        className={cn(
-          'text-base font-semibold leading-7 dark:hover:text-blue-500',
-          className,
-        )}
         {...props}
       >
         {title}
