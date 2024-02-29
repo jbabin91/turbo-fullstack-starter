@@ -25,9 +25,6 @@
     "start": "turbo start",
     "typecheck": "turbo typecheck"
   },
-  "lint-staged": {
-    "*": "prettier -uw"
-  },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-git",
