@@ -27,6 +27,7 @@ const eslintConfig = {
           'error',
           { fixStyle: 'inline-type-imports', prefer: 'type-imports' },
         ],
+        '@typescript-eslint/no-floating-promises': 'off',
         '@typescript-eslint/no-misused-promises': [
           'error',
           { checksVoidReturn: { attributes: false } },
@@ -89,6 +90,7 @@ const eslintConfig = {
       },
     ],
     'unicorn/no-null': 'off',
+    'unicorn/prefer-top-level-await': 'off',
     'unicorn/prevent-abbreviations': 'off',
   },
 };
