@@ -1,9 +1,14 @@
 import { TailwindIndicator } from '@repo/ui';
-import { createRootRoute, Outlet } from '@tanstack/react-router';
+import { createRootRouteWithContext, Outlet } from '@tanstack/react-router';
 
 import { Footer, Navigation, TanStackRouterDevtools } from '@/components';
+import { type AuthContext } from '@/providers/AuthProvider';
 
-export const Route = createRootRoute({
+type RouterContext = {
+  auth: AuthContext;
+};
+
+export const Route = createRootRouteWithContext<RouterContext>()({
   component: RootComponent,
 });
 

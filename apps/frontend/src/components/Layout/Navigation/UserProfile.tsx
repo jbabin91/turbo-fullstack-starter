@@ -12,8 +12,25 @@ import {
   DropdownMenuTrigger,
   Icons,
 } from '@repo/ui';
+import { useNavigate } from '@tanstack/react-router';
+
+import { trpc } from '@/libs';
+import { useAuth } from '@/providers/AuthProvider';
 
 export function UserProfile() {
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  const logoutMutation = trpc.auth.logout.useMutation({
+    onError: (error) => {
+      console.error(error);
+    },
+    onSuccess: () => {
+      auth.logout();
+      navigate({ to: '/' });
+    },
+  });
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -29,7 +46,7 @@ export function UserProfile() {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={() => navigate({ to: '/profile' })}>
             <Icons.User className="mr-2 size-4" />
             <span>Profile</span>
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
@@ -51,7 +68,7 @@ export function UserProfile() {
           <span>GitHub</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={() => logoutMutation.mutate()}>
           <Icons.Logout className="mr-2 size-4" />
           <span>Log out</span>
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>

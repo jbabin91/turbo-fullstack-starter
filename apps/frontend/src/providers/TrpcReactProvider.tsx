@@ -1,10 +1,10 @@
 import { QueryClientProvider } from '@tanstack/react-query';
-import { loggerLink, unstable_httpBatchStreamLink } from '@trpc/client';
+import { httpBatchLink, loggerLink } from '@trpc/client';
 import { useState } from 'react';
 import SuperJSON from 'superjson';
 
 import { TanStackQueryDevtools } from '@/components';
-import { env } from '@/configs';
+import { env, siteConfigs } from '@/configs';
 import { queryClient as QueryClient, trpc } from '@/libs';
 
 export function TRPCReactProvider({ children }: { children: React.ReactNode }) {
@@ -16,10 +16,19 @@ export function TRPCReactProvider({ children }: { children: React.ReactNode }) {
           enabled: (op) =>
             env.DEV || (op.direction === 'down' && op.result instanceof Error),
         }),
-        unstable_httpBatchStreamLink({
+        httpBatchLink({
+          fetch(url, options) {
+            return fetch(url, {
+              ...options,
+              credentials: 'include',
+            });
+          },
           headers() {
             const headers = new Headers();
-            headers.set('x-trpc-source', 'react');
+            headers.set(
+              'x-trpc-source',
+              siteConfigs.name.toLowerCase().replaceAll(' ', '-'),
+            );
             return headers;
           },
           transformer: SuperJSON,

@@ -6,9 +6,9 @@ import {
   SheetHeader,
   SheetTrigger,
 } from '@repo/ui';
+import { Link } from '@tanstack/react-router';
 
 import viteLogo from '/vite.svg';
-import { NavLink } from '@/components';
 import { routes } from '@/configs';
 
 export function MobileNavigation() {
@@ -33,12 +33,16 @@ export function MobileNavigation() {
         </SheetHeader>
         <div className="flex flex-col gap-3">
           {routes.map((route) => (
-            <NavLink
+            <Link
               key={route.to}
-              params={{ ...route.params }}
-              title={route.title}
+              activeProps={{
+                className: 'font-bold text-blue-400',
+              }}
+              className="text-base font-semibold leading-7 dark:hover:text-blue-500"
               to={route.to}
-            />
+            >
+              {route.title}
+            </Link>
           ))}
         </div>
       </SheetContent>

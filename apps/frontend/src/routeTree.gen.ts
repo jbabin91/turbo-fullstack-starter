@@ -15,9 +15,11 @@ import { Route as RegisterImport } from './routes/register'
 import { Route as PostsImport } from './routes/posts'
 import { Route as LoginImport } from './routes/login'
 import { Route as AboutImport } from './routes/about'
+import { Route as AuthImport } from './routes/_auth'
 import { Route as IndexImport } from './routes/index'
 import { Route as PostsIndexImport } from './routes/posts/index'
 import { Route as PostsPostIdIndexImport } from './routes/posts/$postId/index'
+import { Route as AuthProfileIndexImport } from './routes/_auth/profile/index'
 
 // Create/Update Routes
 
@@ -41,6 +43,11 @@ const AboutRoute = AboutImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const AuthRoute = AuthImport.update({
+  id: '/_auth',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
@@ -56,12 +63,21 @@ const PostsPostIdIndexRoute = PostsPostIdIndexImport.update({
   getParentRoute: () => PostsRoute,
 } as any)
 
+const AuthProfileIndexRoute = AuthProfileIndexImport.update({
+  path: '/profile/',
+  getParentRoute: () => AuthRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/_auth': {
+      preLoaderRoute: typeof AuthImport
       parentRoute: typeof rootRoute
     }
     '/about': {
@@ -84,6 +100,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostsIndexImport
       parentRoute: typeof PostsImport
     }
+    '/_auth/profile/': {
+      preLoaderRoute: typeof AuthProfileIndexImport
+      parentRoute: typeof AuthImport
+    }
     '/posts/$postId/': {
       preLoaderRoute: typeof PostsPostIdIndexImport
       parentRoute: typeof PostsImport
@@ -95,6 +115,7 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
+  AuthRoute.addChildren([AuthProfileIndexRoute]),
   AboutRoute,
   LoginRoute,
   PostsRoute.addChildren([PostsIndexRoute, PostsPostIdIndexRoute]),

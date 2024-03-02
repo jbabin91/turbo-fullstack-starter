@@ -1,6 +1,5 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router';
+import { createFileRoute, Link, Outlet } from '@tanstack/react-router';
 
-import { NavLink } from '@/components';
 import { trpc } from '@/libs';
 
 export const Route = createFileRoute('/posts')({
@@ -23,14 +22,18 @@ function PostsLayout() {
                 <ul className="-mx-2 space-y-1">
                   {data?.map((post) => (
                     <li key={post.id}>
-                      <NavLink
-                        className="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
+                      <Link
+                        activeProps={{
+                          className: 'font-bold text-blue-400',
+                        }}
+                        className="group flex gap-x-3 rounded-md p-2 text-base font-semibold leading-6 dark:hover:text-blue-500"
                         params={{
                           postId: post.id,
                         }}
-                        title={post.title}
                         to="/posts/$postId"
-                      />
+                      >
+                        {post.title}
+                      </Link>
                     </li>
                   ))}
                 </ul>

@@ -78,12 +78,12 @@ importers:
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.3.4(react-hook-form@7.51.0)
+      '@legendapp/state':
+        specifier: ^2.1.8
+        version: 2.1.8(react@18.2.0)
       '@repo/api':
         specifier: workspace:^
         version: link:../../packages/api
-      '@repo/auth':
-        specifier: workspace:^
-        version: link:../../packages/auth
       '@repo/ui':
         specifier: workspace:^
         version: link:../../packages/ui
@@ -1463,6 +1463,18 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
+
+  /@legendapp/state@2.1.8(react@18.2.0):
+    resolution: {integrity: sha512-SysgM/9sUg/PlsjnfsUtaL5eesiQ5UMYZ0XFmu+Yn3e1PJMDWuYbdr+uNtjQJnLV/agg44BpQHjNYtBSBolqmw==}
+    peerDependencies:
+      react: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
 
   /@lucia-auth/adapter-drizzle@1.0.2(lucia@3.0.1):
     resolution: {integrity: sha512-GT2Mp0NaUZ5O4OAvzoNcX9bGotoxBfADo6mTzIEKKJ+uar3HgtQVn/m5Ogj3I2iMv0YBHWgMmlnkUHXN5xFNow==}

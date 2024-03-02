@@ -1,5 +1,9 @@
 import { type LinkProps } from '@tanstack/react-router';
 
+export const siteConfigs = {
+  name: 'Turbo Fullstack Starter',
+};
+
 type Route = {
   title: string;
 } & LinkProps;
@@ -9,17 +13,14 @@ export const routes = [
     activeOptions: {
       exact: true,
     },
-    params: {},
     title: 'Home',
     to: '/',
   },
   {
-    params: {},
     title: 'About',
     to: '/about',
   },
   {
-    params: {},
     title: 'Posts',
     to: '/posts',
   },
