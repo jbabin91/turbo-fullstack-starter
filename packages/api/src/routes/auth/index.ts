@@ -19,9 +19,6 @@ const userLoginSchema = z.object({
 });
 
 export const authRouter = router({
-  example: publicProcedure.query(() => {
-    return { message: 'Hello world' };
-  }),
   login: publicProcedure
     .input(userLoginSchema)
     .mutation(async ({ ctx, input }) => {
@@ -66,8 +63,14 @@ export const authRouter = router({
           sessionCookie.value,
           sessionCookie.attributes,
         );
+
         return {
-          status: 'success',
+          message: 'Logged in successfully',
+          user: {
+            email: existingUser.email,
+            name: existingUser.name,
+            username: existingUser.username,
+          },
         };
       } catch (error: unknown) {
         if (error instanceof Error) {
@@ -89,6 +92,7 @@ export const authRouter = router({
       }
 
       await lucia.invalidateSession(session.id);
+      await lucia.invalidateUserSessions(session.userId);
 
       const sessionCookie = lucia.createBlankSessionCookie();
       setCookie(
@@ -110,7 +114,7 @@ export const authRouter = router({
       }
     }
   }),
-  signUp: publicProcedure
+  register: publicProcedure
     .input(insertUserSchema)
     .mutation(async ({ ctx, input }) => {
       try {
@@ -123,6 +127,8 @@ export const authRouter = router({
         }
 
         const hashedPassword = await new Argon2id().hash(input.password);
+
+        // console.log('hashedPassword', hashedPassword);
 
         const usersData = await db
           .insert(users)
