@@ -17,6 +17,7 @@ services:
       - app_network
   pgadmin:
     image: elestio/pgadmin:latest
+    container_name: tfs-pgadmin
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@email.com
