@@ -34,7 +34,7 @@ export const postsRouter = router({
     }
   }),
   delete: publicProcedure
-    .input(z.object({ id: z.number() }))
+    .input(z.object({ id: z.string() }))
     .mutation(async ({ input }) => {
       try {
         const existingPost = await db.query.posts.findFirst({
@@ -81,7 +81,7 @@ export const postsRouter = router({
   getById: publicProcedure
     .input(
       z.object({
-        id: z.number(),
+        id: z.string(),
       }),
     )
     .query(async ({ input }) => {
@@ -107,7 +107,7 @@ export const postsRouter = router({
       z.object({
         content: z.string(),
         draft: z.boolean(),
-        id: z.number(),
+        id: z.string(),
         title: z.string(),
       }),
     )

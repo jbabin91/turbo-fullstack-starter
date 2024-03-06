@@ -27,10 +27,12 @@ const eslintConfig = {
           'error',
           { fixStyle: 'inline-type-imports', prefer: 'type-imports' },
         ],
+        '@typescript-eslint/no-floating-promises': 'off',
         '@typescript-eslint/no-misused-promises': [
           'error',
           { checksVoidReturn: { attributes: false } },
         ],
+        '@typescript-eslint/no-unsafe-argument': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',
@@ -48,12 +50,7 @@ const eslintConfig = {
         'plugin:jsx-a11y/recommended',
       ],
       files: ['*.jsx', '*.tsx'],
-      plugins: ['react-refresh'],
       rules: {
-        'react-refresh/only-export-components': [
-          'warn',
-          { allowConstantExport: true },
-        ],
         'react/jsx-sort-props': [
           'error',
           {
@@ -93,6 +90,7 @@ const eslintConfig = {
       },
     ],
     'unicorn/no-null': 'off',
+    'unicorn/prefer-top-level-await': 'off',
     'unicorn/prevent-abbreviations': 'off',
   },
 };

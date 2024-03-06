@@ -1,4 +1,3 @@
-export * from './Navigation';
-export * from './NavLink';
+export * from './Layout';
 export * from './Spinner';
 export * from './utils';

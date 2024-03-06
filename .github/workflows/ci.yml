@@ -35,13 +35,13 @@ jobs:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
       - name: 📥 Setup
-        uses: ./tooling/github/setup
+        uses: ./.github/actions/setup
       - name: 🏄 Copy env
         run: cp .env.example .env
       - name: 🔎 Branch checks
-        uses: ./tooling/github/branch-checks
+        uses: ./.github/actions/branch-checks
       - name: ⚙️ Build
-        uses: ./tooling/github/build-app
+        uses: ./.github/actions/build-app
 
   deploy-frontend:
     name: 🚀 Deploy (Frontend)
@@ -53,9 +53,9 @@ jobs:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
       - name: 📥 Setup
-        uses: ./tooling/github/setup
+        uses: ./.github/actions/setup
       - name: ⚙️ Build
-        uses: ./tooling/github/build-app
+        uses: ./.github/actions/build-app
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
@@ -74,7 +74,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: 📥 Setup
-        uses: ./tooling/github/setup
+        uses: ./.github/actions/setup
 
       - name: 🛠 Run Migrations
         run: pnpm db:migrate

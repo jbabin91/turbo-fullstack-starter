@@ -1,5 +1,6 @@
 /* eslint-disable unicorn/no-process-exit */
 import { faker } from '@faker-js/faker';
+import { createId } from '@paralleldrive/cuid2';
 import { count, sql } from 'drizzle-orm';
 
 import { db } from './database';
@@ -34,7 +35,11 @@ const main = async () => {
 
   for (let i = 0; i < 20; i++) {
     userData.push({
+      email: faker.internet.email(),
+      id: createId(),
       name: faker.person.fullName(),
+      password: faker.internet.password(),
+      username: faker.internet.userName(),
     });
   }
 
@@ -42,7 +47,7 @@ const main = async () => {
     postData.push({
       content: faker.lorem.paragraphs({ max: 10, min: 2 }),
       title: faker.lorem.word({ length: { max: 5, min: 2 } }),
-      userId: i + 1,
+      userId: userData[i]?.id ?? createId(),
     });
   }
 

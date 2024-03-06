@@ -1,7 +1,10 @@
+import { lucia } from '@repo/auth';
 import { initTRPC, TRPCError } from '@trpc/server';
 import { type FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
 import SuperJSON from 'superjson';
 import { ZodError } from 'zod';
+
+import { getCookies } from './utils/cookies';
 
 /**
  * 1. CONTEXT
@@ -15,21 +18,27 @@ import { ZodError } from 'zod';
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = (opts: FetchCreateContextFnOptions) => {
-  const session = {
-    user: {
-      email: 'test@email.com',
-      name: 'Test User',
-      username: 'test-user',
-    },
-  };
+export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
+  const cookieHeader = getCookies(opts.req);
+  const sessionId = lucia.readSessionCookie(cookieHeader ?? '');
+
+  if (!sessionId) {
+    console.log('>>> tRPC Lucia session not found');
+  }
+
+  const luciaSession = await lucia.validateSession(sessionId ?? '');
   const source = opts.req.headers.get('x-trpc-source') ?? 'unknown';
 
-  console.log('>>> tRPC Request from', source, 'by', session?.user?.email);
+  console.log(
+    '>>> tRPC Request from',
+    source,
+    'by',
+    luciaSession.session?.userId,
+  );
 
   return {
     ...opts,
-    session,
+    session: luciaSession,
   };
 };
 
