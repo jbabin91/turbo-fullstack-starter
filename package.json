@@ -19,7 +19,7 @@
     "postinstall": "pnpm lint:ws",
     "lint": "turbo lint --continue -- --cache --cache-location node_modules/.cache/.eslintcache",
     "lint:fix": "turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
-    "lint:ws": "pnpm dlx sherif@latest",
+    "lint:ws": "sherif",
     "prepare": "is-ci || husky",
     "preview": "turbo preview",
     "start": "turbo start",
@@ -38,9 +38,10 @@
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "prettier-plugin-packagejson": "^2.4.12",
+    "sherif": "^0.8.1",
     "turbo": "^1.12.5",
     "typescript": "^5.4.2",
-    "wrangler": "^3.31.0"
+    "wrangler": "^3.32.0"
   },
   "packageManager": "pnpm@8.15.4"
 }
