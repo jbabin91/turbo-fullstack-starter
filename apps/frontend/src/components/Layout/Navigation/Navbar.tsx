@@ -11,7 +11,7 @@ export function Navbar() {
           activeProps={{
             className: 'font-bold text-blue-400',
           }}
-          className="text-base font-semibold leading-7 dark:hover:text-blue-500"
+          className="text-base font-semibold leading-7 hover:text-blue-500"
           to={route.to}
         >
           {route.title}

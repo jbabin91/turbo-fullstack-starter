@@ -13,7 +13,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
-  useToast,
+  toast,
 } from '@repo/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useForm } from 'react-hook-form';
@@ -144,22 +144,15 @@ const formSchema = z
 function RegisterComponent() {
   const auth = useAuth();
   const navigate = useNavigate();
-  const { toast } = useToast();
 
   const mutation = trpc.auth.register.useMutation({
     onError: (error) => {
       console.error(error);
-      toast({
-        description: 'Uh oh! Something went wrong.',
-        variant: 'destructive',
-      });
+      toast.error('Uh oh! Something went wrong.');
     },
     onSuccess: async (data) => {
       console.log('User registered successfully');
-      toast({
-        description: 'User registered successfully',
-        variant: 'success',
-      });
+      toast.success('User registered successfully');
       auth.user.set(data?.user);
       auth.isAuthenticated.set(true);
       await navigate({ to: '/' });

@@ -13,7 +13,7 @@ export function Providers() {
       <TRPCReactProvider>
         <AuthProvider>
           <TanstackRouterProvider />
-          <Toaster />
+          <Toaster position="bottom-right" />
         </AuthProvider>
       </TRPCReactProvider>
     </Suspense>

@@ -11,7 +11,7 @@ function AboutComponent() {
   const { data, isLoading } = trpc.posts.getAll.useQuery();
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center p-4">
       <div className="mb-3">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
           Hello /about!

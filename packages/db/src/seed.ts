@@ -27,8 +27,10 @@ const main = async () => {
     .from(posts);
 
   if (
-    (countUsers[0] && countUsers[0]?.usersCount > 0) ??
-    (countPosts[0] && countPosts[0]?.postsCount > 0)
+    countUsers[0] &&
+    countUsers[0]?.usersCount > 0 &&
+    countPosts[0] &&
+    countPosts[0]?.postsCount > 0
   ) {
     throw new Error('Database already seeded.');
   }
