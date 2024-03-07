@@ -35,7 +35,7 @@
     "@faker-js/faker": "^8.4.1",
     "@repo/eslint-config": "workspace:^",
     "@repo/tsconfig": "workspace:^",
-    "dotenv-cli": "^7.3.0",
+    "dotenv-cli": "^7.4.0",
     "drizzle-kit": "^0.20.14",
     "pg": "^8.11.3",
     "tsx": "^4.7.1",
