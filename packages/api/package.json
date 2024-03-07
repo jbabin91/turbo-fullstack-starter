@@ -20,8 +20,7 @@
   "dependencies": {
     "@repo/auth": "workspace:^",
     "@repo/db": "workspace:^",
-    "@trpc/react-query": "11.0.0-next-beta.294",
-    "@trpc/server": "11.0.0-next-beta.294",
+    "@trpc/server": "11.0.0-next-beta.311",
     "cookie": "^0.6.0",
     "drizzle-orm": "^0.29.5",
     "oslo": "^1.1.3",
