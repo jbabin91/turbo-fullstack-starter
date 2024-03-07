@@ -7,6 +7,7 @@ import {
 } from 'drizzle-orm';
 import { pgTable, text, timestamp } from 'drizzle-orm/pg-core';
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
+import { type z } from 'zod';
 
 import { posts } from './posts';
 
@@ -30,8 +31,11 @@ export type User = InferSelectModel<typeof users>;
 export type NewUser = InferInsertModel<typeof users>;
 
 export const selectUserSchema = createSelectSchema(users);
+export type SelectUserInput = z.infer<typeof selectUserSchema>;
 export const insertUserSchema = createInsertSchema(users);
+export type InsertUserInput = z.infer<typeof insertUserSchema>;
 export const updateUserSchema = insertUserSchema.partial();
+export type UpdateUserInput = z.infer<typeof updateUserSchema>;
 
 export const usersRelations = relations(users, ({ many }) => ({
   posts: many(posts),

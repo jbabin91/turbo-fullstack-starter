@@ -16,7 +16,7 @@ export const trpcServer = ({
   ...rest
 }: tRPCOptions): MiddlewareHandler => {
   return async (c) => {
-    const res = fetchRequestHandler({
+    const res = await fetchRequestHandler({
       ...rest,
       endpoint,
       req: c.req.raw,

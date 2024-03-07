@@ -42,12 +42,14 @@ export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
   };
 };
 
+export type TrpcContext = Awaited<ReturnType<typeof createTRPCContext>>;
+
 /**
  * 2. INITIALIZATION
  *
  * This is where the trpc api is initialized, connecting the context and transformer
  */
-const t = initTRPC.context<typeof createTRPCContext>().create({
+const t = initTRPC.context<TrpcContext>().create({
   errorFormatter: ({ shape, error }) => ({
     ...shape,
     data: {
