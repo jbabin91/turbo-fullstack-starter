@@ -24,12 +24,13 @@ export function MobileNavigation() {
         className="flex w-3/5 flex-col items-start justify-start gap-5"
         side="left"
       >
-        <SheetHeader>
+        <SheetHeader className="flex flex-row">
           <img
             alt="Vite logo"
             className="ml-4 h-8 w-auto transition duration-300 hover:scale-110"
             src={viteLogo}
           />
+          <h1 className="ml-4 text-2xl font-bold tracking-tight">TFS</h1>
         </SheetHeader>
         <div className="flex flex-col gap-3">
           {routes.map((route) => (

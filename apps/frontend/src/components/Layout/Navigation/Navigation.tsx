@@ -20,6 +20,9 @@ export function Navigation() {
           className="hidden h-8 w-auto transition duration-300 hover:scale-110 md:flex"
           src={viteLogo}
         />
+        <h1 className="hidden text-2xl font-bold tracking-tight md:flex">
+          TFS
+        </h1>
       </div>
       <Navbar />
       <div className="flex flex-1 items-center justify-end gap-x-5">

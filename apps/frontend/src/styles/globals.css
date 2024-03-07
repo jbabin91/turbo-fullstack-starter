@@ -4,9 +4,6 @@
 
 @layer base {
   :root {
-    --font-geist-mono: 'Geist Mono', monospace;
-    --font-geist-sans: 'Geist Sans', sans-serif;
-
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
 

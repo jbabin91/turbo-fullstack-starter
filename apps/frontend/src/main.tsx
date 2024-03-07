@@ -1,6 +1,4 @@
 import '@/styles/globals.css';
-import '@fontsource/geist-mono';
-import '@fontsource/geist-sans';
 
 import { enableReactTracking } from '@legendapp/state/config/enableReactTracking';
 import { configureObservablePersistence } from '@legendapp/state/persist';

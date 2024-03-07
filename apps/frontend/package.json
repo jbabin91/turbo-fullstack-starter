@@ -19,8 +19,6 @@
     "root": true
   },
   "dependencies": {
-    "@fontsource/geist-mono": "^5.0.2",
-    "@fontsource/geist-sans": "^5.0.2",
     "@hookform/resolvers": "^3.3.4",
     "@legendapp/state": "^2.1.8",
     "@repo/api": "workspace:^",
