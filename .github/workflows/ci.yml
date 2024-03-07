@@ -46,6 +46,7 @@ jobs:
   deploy-frontend:
     name: 🚀 Deploy (Frontend)
     runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: checks
     steps:
       - name: 🛑 Cancel Previous Runs
@@ -65,6 +66,7 @@ jobs:
   deploy-backend:
     name: 🚀 Deploy (Backend)
     runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: checks
     steps:
       - name: 🛑 Cancel Previous Runs
@@ -89,14 +91,14 @@ jobs:
       - name: 🎈 Setup Fly
         uses: superfly/flyctl-actions/setup-flyctl@1.5
 
-      - name: 🚀 Deploy Staging
-        if: ${{ github.ref == 'refs/heads/develop' }}
-        run:
-          flyctl deploy --remote-only --build-arg COMMIT_SHA=${{ github.sha }}
-          --app ${{ steps.app_name.outputs.value }}-staging
-          --config ./apps/backend/fly.toml
-          --dockerfile ./apps/backend/Dockerfile
-          --ignorefile ./apps/backend/.dockerignore
+      # - name: 🚀 Deploy Staging
+      #   if: ${{ github.ref == 'refs/heads/develop' }}
+      #   run:
+      #     flyctl deploy --remote-only --build-arg COMMIT_SHA=${{ github.sha }}
+      #     --app ${{ steps.app_name.outputs.value }}-staging
+      #     --config ./apps/backend/fly.toml
+      #     --dockerfile ./apps/backend/Dockerfile
+      #     --ignorefile ./apps/backend/.dockerignore
 
       - name: 🚀 Deploy Production
         if: ${{ github.ref == 'refs/heads/main' }}
