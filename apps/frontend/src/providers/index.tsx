@@ -1,3 +1,4 @@
+import { Toaster } from '@repo/ui';
 import { Suspense } from 'react';
 
 import { Spinner } from '@/components';
@@ -12,6 +13,7 @@ export function Providers() {
       <TRPCReactProvider>
         <AuthProvider>
           <TanstackRouterProvider />
+          <Toaster />
         </AuthProvider>
       </TRPCReactProvider>
     </Suspense>

@@ -13,12 +13,14 @@ import {
   FormLabel,
   FormMessage,
   Input,
+  useToast,
 } from '@repo/ui';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { trpc } from '@/libs';
+import { useAuth } from '@/providers/AuthProvider';
 
 export const Route = createFileRoute('/register')({
   component: RegisterComponent,
@@ -140,12 +142,27 @@ const formSchema = z
   });
 
 function RegisterComponent() {
+  const auth = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
   const mutation = trpc.auth.register.useMutation({
     onError: (error) => {
       console.error(error);
+      toast({
+        description: 'Uh oh! Something went wrong.',
+        variant: 'destructive',
+      });
     },
-    onSuccess: () => {
+    onSuccess: async (data) => {
       console.log('User registered successfully');
+      toast({
+        description: 'User registered successfully',
+        variant: 'success',
+      });
+      auth.user.set(data?.user);
+      auth.isAuthenticated.set(true);
+      await navigate({ to: '/' });
     },
   });
 
@@ -160,7 +177,6 @@ function RegisterComponent() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
     mutation.mutate(values);
   }
 

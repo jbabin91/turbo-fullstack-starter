@@ -13,6 +13,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
+  useToast,
 } from '@repo/ui';
 import {
   createFileRoute,
@@ -46,6 +47,7 @@ const formSchema = z.object({
 function LoginComponent() {
   const auth = useAuth();
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   const search = routeApi.useSearch();
 
@@ -60,8 +62,17 @@ function LoginComponent() {
   const { mutate: loginAction } = trpc.auth.login.useMutation({
     onError: (error) => {
       console.error(error);
+      toast({
+        description: 'Uh oh! Something went wrong.',
+        variant: 'destructive',
+      });
     },
     onSuccess: async (data) => {
+      console.log('User logged in successfully');
+      toast({
+        description: 'User logged in successfully',
+        variant: 'success',
+      });
       auth.user.set(data?.user);
       auth.isAuthenticated.set(true);
       await navigate({ to: search.redirect });
