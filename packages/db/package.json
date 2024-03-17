@@ -27,7 +27,7 @@
   "dependencies": {
     "@paralleldrive/cuid2": "^2.2.2",
     "dotenv": "^16.4.5",
-    "drizzle-orm": "^0.30.0",
+    "drizzle-orm": "^0.30.2",
     "drizzle-zod": "^0.5.1",
     "postgres": "^3.4.3"
   },
@@ -35,7 +35,7 @@
     "@faker-js/faker": "^8.4.1",
     "@repo/eslint-config": "workspace:^",
     "@repo/tsconfig": "workspace:^",
-    "dotenv-cli": "^7.4.0",
+    "dotenv-cli": "^7.4.1",
     "drizzle-kit": "^0.20.14",
     "pg": "^8.11.3",
     "tsx": "^4.7.1",

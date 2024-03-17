@@ -23,6 +23,6 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:^",
     "@repo/tsconfig": "workspace:^",
-    "@types/node": "^20.11.25"
+    "@types/node": "^20.11.28"
   }
 }
