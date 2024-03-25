@@ -37,6 +37,6 @@
   "devDependencies": {
     "@repo/tsconfig": "workspace:^",
     "@types/eslint": "^8.56.6",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.3"
   }
 }
