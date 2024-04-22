@@ -30,7 +30,7 @@
     "@repo/tsconfig": "workspace:^",
     "@types/node": "^20.11.30",
     "dotenv-cli": "^7.4.1",
-    "tsx": "^4.7.1",
+    "tsx": "^4.7.2",
     "typescript": "^5.4.3"
   }
 }
