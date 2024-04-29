@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
-    "@legendapp/state": "^2.1.8",
+    "@legendapp/state": "^2.1.13",
     "@repo/api": "workspace:^",
     "@repo/ui": "workspace:^",
     "@tanstack/react-query": "^5.28.4",
