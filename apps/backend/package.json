@@ -29,7 +29,7 @@
     "@repo/eslint-config": "workspace:^",
     "@repo/tsconfig": "workspace:^",
     "@types/node": "^20.11.30",
-    "dotenv-cli": "^7.4.1",
+    "dotenv-cli": "^7.4.2",
     "tsx": "^4.7.3",
     "typescript": "^5.4.5"
   }
