@@ -210,8 +210,8 @@ importers:
   packages/auth:
     dependencies:
       '@lucia-auth/adapter-drizzle':
-        specifier: ^1.0.4
-        version: 1.0.4(lucia@3.1.1)
+        specifier: ^1.0.7
+        version: 1.0.7(lucia@3.1.1)
       '@repo/db':
         specifier: workspace:^
         version: link:../db
@@ -1475,8 +1475,8 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /@lucia-auth/adapter-drizzle@1.0.4(lucia@3.1.1):
-    resolution: {integrity: sha512-eF0DyebhgG8SLBpEG0BiDLm9DLCCYJj3EFN4TvU/oaJ7expEuY5nPZj4mvUpxX8I9DYwC7ROhMWC9WyjY1pQ9Q==}
+  /@lucia-auth/adapter-drizzle@1.0.7(lucia@3.1.1):
+    resolution: {integrity: sha512-X/V7fLBca8EC/gPXCntwbQpb0+F9oEuRoHElvsi9rCrdnGhCMNxHgwAvgiQ6pes+rIYpyvx4n3hvjqo/fPo03A==}
     peerDependencies:
       lucia: 3.x
     dependencies:
