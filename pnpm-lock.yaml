@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       cz-git:
-        specifier: ^1.9.2
-        version: 1.9.2
+        specifier: ^1.9.3
+        version: 1.9.3
       husky:
         specifier: ^9.0.11
         version: 9.0.11
@@ -4683,8 +4683,8 @@ packages:
   /csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
-  /cz-git@1.9.2:
-    resolution: {integrity: sha512-HqwSIZBl/Vtlq56wsHuQHhQ0CF7rABEvhvbSAaGViLeM5YucLu5o+U2XLow1Y2bwIAfAIKZHfgg9fxP7P3XU3Q==}
+  /cz-git@1.9.3:
+    resolution: {integrity: sha512-v7+vYOparImLLo6J5tAsi/cz+EAK7FI/TDnemi11xgEax4k+ZVqxsmkiEc68n+MJLp1l5THhB2KTDhjpW+ellg==}
     engines: {node: '>=v12.20.0'}
     dev: true
 
