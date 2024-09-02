@@ -79,8 +79,8 @@ importers:
         specifier: ^3.3.4
         version: 3.3.4(react-hook-form@7.51.1)
       '@legendapp/state':
-        specifier: ^2.1.14
-        version: 2.1.14(react@18.2.0)
+        specifier: ^2.1.15
+        version: 2.1.15(react@18.2.0)
       '@repo/api':
         specifier: workspace:^
         version: link:../../packages/api
@@ -1463,8 +1463,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@legendapp/state@2.1.14(react@18.2.0):
-    resolution: {integrity: sha512-ZGcyNU33HLD4BaUqat9TR6Jcm65VREl7iH7cdwmucq1khu/wG95FrDP6Y9iHByHgUsOwwyByzkGXi7+ufccAtQ==}
+  /@legendapp/state@2.1.15(react@18.2.0):
+    resolution: {integrity: sha512-7/8Rgg7m38eznupr36QJeSkrtbhVxaRtQvRMjdBigSm+HW3ZIFgMtUX1DqZ2hJxbPqqAJamw5s+TLs8dRstUNw==}
     peerDependencies:
       react: '>=16.8.0'
     peerDependenciesMeta:
